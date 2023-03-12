@@ -6,19 +6,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './features/components/header/header.component';
 import { NavbarComponent } from './features/components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
+import { SearchBarComponent } from './features/components/search-bar/search-bar.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    NavbarComponent,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, HeaderComponent, NavbarComponent, HomeComponent, SearchBarComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
