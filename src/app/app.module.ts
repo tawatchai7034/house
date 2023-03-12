@@ -10,9 +10,10 @@ import { SearchBarComponent } from './features/components/search-bar/search-bar.
 import { ContentComponent } from './features/components/content/content.component';
 import { CardComponent } from './features/components/card/card.component';
 import { FooterComponent } from './features/components/footer/footer.component';
+import { NewsletterComponent } from './features/components/newsletter/newsletter.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, NavbarComponent, HomeComponent, SearchBarComponent, ContentComponent, CardComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, NavbarComponent, HomeComponent, SearchBarComponent, ContentComponent, CardComponent, FooterComponent, NewsletterComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
