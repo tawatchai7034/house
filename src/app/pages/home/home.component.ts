@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     <!-- Template Start -->
     <div>
       <app-header></app-header>
+      <app-search-bar style="position: relative; top: -150px;"></app-search-bar>
     </div>
     <!-- Template End -->
   `,
