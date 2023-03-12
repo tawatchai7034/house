@@ -5,7 +5,8 @@
   background-position: center;
   background-attachment: fixed;
   height: 750px;
-  border-radius: 28px;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
 }
 .header-content-container {
   display: flex;
