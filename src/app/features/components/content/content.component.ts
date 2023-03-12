@@ -12,7 +12,12 @@ import { Component } from '@angular/core';
         somewhere to roam, we’ve got the travel tools to get you to your
         destination.
       </p>
-      <app-card></app-card>
+      <div class="content-card-container">
+        <app-card></app-card>
+        <app-card></app-card>
+        <app-card></app-card>
+        <app-card></app-card>
+      </div>
     </div>
     <!-- Template End -->
   `,
