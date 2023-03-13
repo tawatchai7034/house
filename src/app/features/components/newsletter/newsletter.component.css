@@ -5,8 +5,18 @@
   margin: 0 120px;
   padding: 30px;
   border-radius: 16px;
-}
 
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+@keyframes neon {
+  from {
+    box-shadow: 0 0 10px #8dd3bb, 0 0 20px #8dd3bb, 0 0 30px #8dd3bb,
+      0 0 40px #8dd3bb, 0 0 70px #8dd3bb, 0 0 80px #8dd3bb, 0 0 100px #8dd3bb;
+  }
+  to {
+    box-shadow: none;
+  }
+}
 .newsletter-submit-container {
   display: flex;
   gap: 15px;
@@ -31,4 +41,8 @@ span {
 }
 .newsletter-svg-container {
   width: 50%;
+}
+h2 {
+  font-size: 44px;
+  font-weight: 700;
 }
