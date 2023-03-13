@@ -35,6 +35,11 @@
   flex: 1;
   margin-right: 10px;
 }
+
+.inputs-container input:focus {
+  border: 1px solid #8dd3bb;
+  outline: none;
+}
 .buttons-container {
   padding: 10px;
   justify-content: flex-end;
