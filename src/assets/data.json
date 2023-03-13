@@ -1,0 +1,207 @@
+{
+  "hotels": [
+    {
+      "name": "Grand Hotel",
+      "nightlyPrice": 150,
+      "address": "123 Main Street, Anytown USA",
+      "photos": [
+        "https://picsum.photos/300/200?random=1",
+        "https://picsum.photos/300/200?random=2",
+        "https://picsum.photos/300/200?random=3",
+        "https://picsum.photos/300/200?random=4",
+        "https://picsum.photos/300/200?random=5"
+      ],
+      "overview": "The Grand Hotel offers luxurious accommodations and top-notch amenities for discerning travelers.",
+      "rooms": [
+        {
+          "name": "Deluxe Room",
+          "description": "Spacious room with king-sized bed and stunning views.",
+          "price": 200
+        },
+        {
+          "name": "Executive Suite",
+          "description": "Elegant suite with separate living area and whirlpool tub.",
+          "price": 350
+        },
+        {
+          "name": "Penthouse",
+          "description": "The ultimate in luxury with private balcony and butler service.",
+          "price": 1000
+        },
+        {
+          "name": "Standard Room",
+          "description": "Comfortable room with queen-sized bed and all the essentials.",
+          "price": 150
+        }
+      ],
+      "location": {
+        "lat": 40.7128,
+        "lng": -74.006
+      },
+      "amenities": [
+        "Free WiFi",
+        "24-hour front desk",
+        "Concierge service",
+        "Fitness center",
+        "Indoor pool",
+        "Spa",
+        "On-site restaurant",
+        "Room service",
+        "Business center",
+        "Pet friendly"
+      ]
+    },
+    {
+      "name": "Beach Resort",
+      "nightlyPrice": 200,
+      "address": "456 Ocean Avenue, Seaside USA",
+      "photos": [
+        "https://picsum.photos/300/200?random=6",
+        "https://picsum.photos/300/200?random=7",
+        "https://picsum.photos/300/200?random=8",
+        "https://picsum.photos/300/200?random=9",
+        "https://picsum.photos/300/200?random=10"
+      ],
+      "overview": "The Beach Resort is a tropical paradise with white sandy beaches and crystal clear waters.",
+      "rooms": [
+        {
+          "name": "Ocean View Suite",
+          "description": "Spacious suite with stunning views of the ocean.",
+          "price": 350
+        },
+        {
+          "name": "Cabana",
+          "description": "Private cabana with direct access to the beach.",
+          "price": 500
+        },
+        {
+          "name": "Garden View Room",
+          "description": "Cozy room with garden views and all the essentials.",
+          "price": 200
+        },
+        {
+          "name": "Standard Room",
+          "description": "Comfortable room with all the essentials.",
+          "price": 150
+        }
+      ],
+      "location": {
+        "lat": 25.7617,
+        "lng": -80.1918
+      },
+      "amenities": [
+        "Free WiFi",
+        "24-hour front desk",
+        "Concierge service",
+        "Fitness center",
+        "Outdoor pool",
+        "On-site restaurant",
+        "Room service",
+        "Beach bar",
+        "Spa",
+        "Water sports",
+        "Tennis court",
+        "Kid's club"
+      ]
+    },
+    {
+      "name": "Mountain Lodge",
+      "nightlyPrice": 120,
+      "address": "789 Alpine Road, Mountainville USA",
+      "photos": [
+        "https://picsum.photos/300/200?random=11",
+        "https://picsum.photos/300/200?random=12",
+        "https://picsum.photos/300/200?random=13",
+        "https://picsum.photos/300/200?random=14",
+        "https://picsum.photos/300/200?random=15"
+      ],
+      "overview": "The Mountain Lodge is a cozy retreat nestled in the heart of the mountains.",
+      "rooms": [
+        {
+          "name": "Mountain View Suite",
+          "description": "Spacious suite with stunning views of the mountains.",
+          "price": 200
+        },
+        {
+          "name": "Log Cabin",
+          "description": "Rustic cabin with all the essentials and a wood-burning fireplace.",
+          "price": 250
+        },
+        {
+          "name": "Standard Room",
+          "description": "Comfortable room with all the essentials.",
+          "price": 120
+        },
+        {
+          "name": "Family Room",
+          "description": "Perfect for families with bunk beds and plenty of space.",
+          "price": 180
+        }
+      ],
+      "location": {
+        "lat": 39.7392,
+        "lng": -104.9903
+      },
+      "amenities": [
+        "Free WiFi",
+        "24-hour front desk",
+        "Concierge service",
+        "Fitness center",
+        "Hot tub",
+        "Sauna",
+        "On-site restaurant",
+        "Room service",
+        "Business center",
+        "Pet friendly"
+      ]
+    },
+    {
+      "name": "City Center Hotel",
+      "nightlyPrice": 180,
+      "address": "321 Broadway, Downtown USA",
+      "photos": [
+        "https://picsum.photos/300/200?random=16",
+        "https://picsum.photos/300/200?random=17",
+        "https://picsum.photos/300/200?random=18",
+        "https://picsum.photos/300/200?random=19",
+        "https://picsum.photos/300/200?random=20"
+      ],
+      "overview": "The City Center Hotel is located in the heart of the city, close to all the best shopping and dining.",
+      "rooms": [
+        {
+          "name": "Executive Suite",
+          "description": "Spacious suite with separate living area and stunning city views.",
+          "price": 300
+        },
+        {
+          "name": "City View Room",
+          "description": "Comfortable room with views of the city and all the essentials.",
+          "price": 180
+        },
+        {
+          "name": "Standard Room",
+          "description": "Comfortable room with all the essentials.",
+          "price": 150
+        },
+        {
+          "name": "Family Room",
+          "description": "Perfect for families with two queen-sized beds and plenty of space.",
+          "price": 250
+        }
+      ],
+      "location": {
+        "lat": 37.7749,
+        "lng": -122.4194
+      },
+      "amenities": [
+        "Free WiFi",
+        "24-hour front desk",
+        "Concierge service",
+        "Fitness center",
+        "Indoor pool",
+        "On-site restaurant",
+        "Room service"
+      ]
+    }
+  ]
+}

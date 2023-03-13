@@ -11,10 +11,20 @@ import { ContentComponent } from './features/components/content/content.componen
 import { CardComponent } from './features/components/card/card.component';
 import { FooterComponent } from './features/components/footer/footer.component';
 import { NewsletterComponent } from './features/components/newsletter/newsletter.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, NavbarComponent, HomeComponent, SearchBarComponent, ContentComponent, CardComponent, FooterComponent, NewsletterComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    NavbarComponent,
+    HomeComponent,
+    SearchBarComponent,
+    ContentComponent,
+    CardComponent,
+    FooterComponent,
+    NewsletterComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
