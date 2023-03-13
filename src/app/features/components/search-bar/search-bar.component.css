@@ -13,7 +13,7 @@
   padding: 12px;
   margin: 0 20px;
   width: 90%;
-  box-shadow: 0px 4px 16px rgba(17, 34, 17, 0.5);
+  box-shadow: 0 30px 50px #8dd3bb;
   border-radius: 16px;
 }
 .section-title {
@@ -48,8 +48,21 @@ button {
 .button-promo {
   background: none;
 }
+.button-promo:hover {
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: 0 0 10px #8dd3bb;
+  transition: ease-in-out 0.3s;
+}
 .button-show-place {
   background-color: #8dd3bb;
   padding: 14px;
   border-radius: 6px;
+}
+.button-show-place:hover {
+  background-color: #8dd3bb;
+  color: #fff;
+  transition: ease-in-out 0.3s;
+  box-shadow: 0 0 10px #8dd3bb;
 }

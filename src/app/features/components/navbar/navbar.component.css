@@ -29,12 +29,20 @@
   color: #fff;
   cursor: pointer;
 }
+.login-button:hover {
+  background-color: #8dd3bb;
+  transition: ease-in-out 0.5s;
+}
 .sign-up-button {
   width: 125px;
   background-color: #fff;
   padding: 12px;
   border-radius: 8px;
   border: none;
+}
+.sign-up-button:hover {
+  background-color: #8dd3bb;
+  transition: 0.5s;
 }
 .company-name {
   width: 300px;

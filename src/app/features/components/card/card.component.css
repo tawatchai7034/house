@@ -1,10 +1,10 @@
 .card-container {
   width: 350px;
-  height: 400px;
+  height: 500px;
   background-image: url("https://media.cntraveler.com/photos/5b72ec79890b740fb9121fd9/16:9/w_1280,c_limit/Melbounre_GettyImages-752151085.jpg");
   border-radius: 16px;
   padding: 20px;
-  padding-top: 150px;
+  padding-top: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,9 +13,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
   color: #fff;
 }
+
 .card-content {
   padding: 20px;
 }

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       <ul class="navbar-item-container">
         <li class="empty"></li>
         <li class="company-name">
-          <h5>Enoca Booking</h5>
+          <h3>Enoca Booking</h3>
         </li>
         <li class="button-section">
           <button class="login-button">Login</button>

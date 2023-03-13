@@ -4,8 +4,6 @@
   background-repeat: no-repeat;
   background-position: center;
   height: 750px;
-  border-bottom-left-radius: 28px;
-  border-bottom-right-radius: 28px;
 }
 .header-content-container {
   display: flex;
