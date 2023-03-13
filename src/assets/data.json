@@ -1,5 +1,4 @@
-{
-  "hotels": [
+[
     {
       "name": "Grand Hotel",
       "nightlyPrice": 150,
@@ -204,4 +203,3 @@
       ]
     }
   ]
-}

@@ -14,10 +14,13 @@ export class HotelsEffects {
 
   getHotels$ = createEffect(() => this.actions$.pipe(
     ofType(HotelsActions.loadHotels),
-    switchMap(() => this.dataService.getHotels().pipe(
-      map((hotels: HotelDataModel[]) => HotelsActions.loadHotelsSuccess({hotels})),
-      catchError((error: any) => of(HotelsActions.loadHotelsFailure({error})))
-    ))
+    switchMap(() => {
+      console.log('Getting hotels...');
+      return this.dataService.getHotels().pipe(
+        map((hotels: HotelDataModel[]) => HotelsActions.loadHotelsSuccess({hotels})),
+        catchError((error: any) => of(HotelsActions.loadHotelsFailure({error})))
+      )
+    })
   ))
 
 }

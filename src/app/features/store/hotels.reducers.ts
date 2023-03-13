@@ -1,4 +1,4 @@
-import {HotelsStateInterface} from "../../core/models/Hotels-state.model";
+import {HotelsStateInterface} from "../../core/models/hotels-state.model";
 import {createReducer, on} from "@ngrx/store";
 import * as HotelsActions from "./hotels.actions";
 

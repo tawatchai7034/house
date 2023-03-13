@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {HotelDataModel} from "../../store/hotel.model";
+import {select, Store} from "@ngrx/store";
+import {AppStateInterface} from "../../../core/models/app-state.model";
+import {errorSelector, hotelsSelector, isLoadingSelector} from "../../store/hotels.selectors";
+import * as HotelsActions from "../../store/hotels.actions";
 
 @Component({
   selector: 'app-content',
@@ -13,14 +19,33 @@ import { Component } from '@angular/core';
         destination.
       </p>
       <div class="content-card-container">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
+        <ng-container *ngIf="(hotels$ |async) as hotels">
+        <ng-container *ngFor="let hotel of hotels">
+
+        <app-card [hotel]="hotel"></app-card>
+        </ng-container>
+        </ng-container>
       </div>
     </div>
     <!-- Template End -->
   `,
   styleUrls: ['./content.component.css'],
 })
-export class ContentComponent {}
+export class ContentComponent implements OnInit{
+  isLoading$: Observable<boolean>;
+  error$: Observable<string | null>;
+  hotels$: Observable<HotelDataModel[]>;
+  constructor(
+    private store: Store<AppStateInterface>
+  ) {
+    this.error$ = this.store.pipe(select(errorSelector));
+    this.isLoading$ = this.store.pipe(select(isLoadingSelector));
+    this.hotels$ = this.store.pipe(select(hotelsSelector));
+    //
+    this.hotels$.subscribe((data) => console.log(data))
+  }
+
+  ngOnInit() {
+    this.store.dispatch(HotelsActions.loadHotels());
+  }
+}

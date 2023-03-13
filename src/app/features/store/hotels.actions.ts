@@ -8,5 +8,5 @@ export const loadHotelsSuccess = createAction(
 );
 export const loadHotelsFailure = createAction(
   '[Hotels] Load Hotels Failure',
-  props<{ error: any }>()
+  props<{ error: string }>()
 );

@@ -8,9 +8,14 @@ import { HotelDataModel } from '../../features/store/hotel.model';
 export class DataService {
   private hotelsURL = 'assets/data.json';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+
+  }
 
   getHotels(): Observable<HotelDataModel[]> {
+    console.log('Fetching hotels from API...');
     return this.http.get<HotelDataModel[]>(this.hotelsURL);
   }
+
 }
+

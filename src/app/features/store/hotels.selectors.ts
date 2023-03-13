@@ -4,7 +4,7 @@ import {createSelector} from "@ngrx/store";
 
 
 export const selectFeature = (state: AppStateInterface) => {
-  state.hotels
+  return state.hotels
 }
 
 export const isLoadingSelector = createSelector(
