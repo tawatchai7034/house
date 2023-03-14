@@ -1,8 +1,8 @@
 .navbar-container {
   width: 100%;
 }
+
 .navbar-item-container {
-  display: blue;
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -10,6 +10,7 @@
   align-items: center;
   padding: 15px;
 }
+
 .button-section {
   display: flex;
   justify-content: center;
@@ -18,21 +19,22 @@
   gap: 5px;
   border: none;
 }
+
 .login-button {
   background-color: transparent;
-  color: white;
   padding: 12px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   width: 100px;
   color: #fff;
-  cursor: pointer;
 }
+
 .login-button:hover {
   background-color: #8dd3bb;
   transition: ease-in-out 0.5s;
 }
+
 .sign-up-button {
   width: 125px;
   background-color: #fff;
@@ -40,15 +42,19 @@
   border-radius: 8px;
   border: none;
 }
+
 .sign-up-button:hover {
   background-color: #8dd3bb;
   transition: 0.5s;
 }
+
 .company-name {
   width: 300px;
   padding: 10px;
   color: #fff;
 }
+
 .empty {
   width: 190px;
 }
+
