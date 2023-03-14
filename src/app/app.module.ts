@@ -17,6 +17,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {hotelReducer} from "./features/store/hotels.reducers";
 import {HotelsEffects} from "./features/store/hotels.effects";
+import { HotelListingComponent } from './pages/hotel-listing/hotel-listing.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {HotelsEffects} from "./features/store/hotels.effects";
     CardComponent,
     FooterComponent,
     NewsletterComponent,
+    HotelListingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, StoreModule.forRoot(
     {},{}
