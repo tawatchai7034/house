@@ -1,10 +1,10 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HotelDataModel} from "../../store/hotel.model";
 
 @Component({
   selector: 'app-card',
   template: `
-    <div class="card-container">
+    <div class="card-container" [style.background-image]="'url(' + selectedBackgroundPhoto + ')'">
       <div class="card-content-container">
         <section class="card-content">
           <h6>{{hotel?.name}}</h6>
@@ -18,9 +18,15 @@ import {HotelDataModel} from "../../store/hotel.model";
   `,
   styleUrls: ['./card.component.css'],
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
   @Input() hotel: HotelDataModel | undefined;
 
-  constructor() {}
+  selectedBackgroundPhoto: string | undefined;
 
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    this.selectedBackgroundPhoto = this.hotel?.cardBackground;
+  }
 }

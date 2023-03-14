@@ -20,10 +20,10 @@ import * as HotelsActions from "../../store/hotels.actions";
       </p>
       <div class="content-card-container">
         <ng-container *ngIf="(hotels$ |async) as hotels">
-        <ng-container *ngFor="let hotel of hotels">
+          <ng-container *ngFor="let hotel of hotels">
 
-        <app-card [hotel]="hotel"></app-card>
-        </ng-container>
+            <app-card [hotel]="hotel"></app-card>
+          </ng-container>
         </ng-container>
       </div>
     </div>
@@ -31,10 +31,11 @@ import * as HotelsActions from "../../store/hotels.actions";
   `,
   styleUrls: ['./content.component.css'],
 })
-export class ContentComponent implements OnInit{
+export class ContentComponent implements OnInit {
   isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
   hotels$: Observable<HotelDataModel[]>;
+
   constructor(
     private store: Store<AppStateInterface>
   ) {
