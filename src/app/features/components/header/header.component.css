@@ -1,10 +1,10 @@
 .header-container {
-  background-image: url("https://frontier-canada.co.uk/wp-content/uploads/2018/09/ontario-1000islands-aerial-holiday1920x1080.jpg");
+
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("https://frontier-canada.co.uk/wp-content/uploads/2018/09/ontario-1000islands-aerial-holiday1920x1080.jpg") no-repeat center;
   height: 750px;
 }
+
 .header-content-container {
   display: flex;
   flex-direction: column;
@@ -14,14 +14,17 @@
   font-weight: 700;
   color: #fff;
 }
+
 .header-content-container > p:nth-child(1) {
   font-size: 45px;
   line-height: 57px;
 }
+
 .header-content-container > p:nth-child(2) {
   font-size: 80px;
   line-height: 101px;
 }
+
 .header-content-container > p:nth-child(3) {
   font-size: 20px;
 }
