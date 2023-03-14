@@ -12,7 +12,7 @@ import {HotelDataModel} from "../../store/hotel.model";
         </section>
         <section class="card-price">{{hotel?.nightlyPrice  | currency}}</section>
       </div>
-      <button>Book a Hotel</button>
+      <button>Book Now</button>
     </div>
   `,
   styleUrls: ['./card.component.css'],
