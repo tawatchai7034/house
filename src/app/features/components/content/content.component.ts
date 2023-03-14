@@ -20,7 +20,7 @@ import * as HotelsActions from "../../store/hotels.actions";
       </p>
       <div class="content-card-container">
         <ng-container *ngIf="(hotels$ |async) as hotels">
-          <ng-container *ngFor="let hotel of hotels">
+          <ng-container *ngFor="let hotel of hotels | slice: 0:4">
 
             <app-card [hotel]="hotel"></app-card>
           </ng-container>

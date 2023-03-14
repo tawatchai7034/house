@@ -14,7 +14,6 @@ import {HotelDataModel} from "../../store/hotel.model";
       </div>
       <button>Book a Hotel</button>
     </div>
-
   `,
   styleUrls: ['./card.component.css'],
 })

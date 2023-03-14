@@ -2,7 +2,7 @@
   {
     "name": "Grand Hotel",
     "nightlyPrice": 150,
-    "cardBackground": "https://media.cntraveler.com/photos/5b72ec79890b740fb9121fd9/16:9/w_1280,c_limit/Melbounre_GettyImages-752151085.jpg",
+    "cardBackground": "https://images.unsplash.com/photo-1630587148265-761cbd139043?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Z3JhbmQlMjBob3RlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
     "address": "123 Main Street, Anytown USA",
     "photos": [
       "https://picsum.photos/300/200?random=1",
@@ -54,7 +54,7 @@
   {
     "name": "Beach Resort",
     "nightlyPrice": 200,
-    "cardBackground": "https://ipektatil.com/wp-content/uploads/2017/12/5a1ec2540f25440f288d63a5.jpg",
+    "cardBackground": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     "address": "456 Ocean Avenue, Seaside USA",
     "photos": [
       "https://picsum.photos/300/200?random=6",
@@ -108,6 +108,7 @@
   {
     "name": "Mountain Lodge",
     "nightlyPrice": 120,
+    "cardBackground": "https://images.unsplash.com/photo-1602061970430-4fbf0ddc4c16?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     "address": "789 Alpine Road, Mountainville USA",
     "photos": [
       "https://picsum.photos/300/200?random=11",
@@ -159,6 +160,56 @@
   {
     "name": "City Center Hotel",
     "nightlyPrice": 180,
+    "cardBackground": "https://images.unsplash.com/photo-1645226626345-fc884e2d8fcf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80",
+    "address": "321 Broadway, Downtown USA",
+    "photos": [
+      "https://picsum.photos/300/200?random=16",
+      "https://picsum.photos/300/200?random=17",
+      "https://picsum.photos/300/200?random=18",
+      "https://picsum.photos/300/200?random=19",
+      "https://picsum.photos/300/200?random=20"
+    ],
+    "overview": "The City Center Hotel is located in the heart of the city, close to all the best shopping and dining.",
+    "rooms": [
+      {
+        "name": "Executive Suite",
+        "description": "Spacious suite with separate living area and stunning city views.",
+        "price": 300
+      },
+      {
+        "name": "City View Room",
+        "description": "Comfortable room with views of the city and all the essentials.",
+        "price": 180
+      },
+      {
+        "name": "Standard Room",
+        "description": "Comfortable room with all the essentials.",
+        "price": 150
+      },
+      {
+        "name": "Family Room",
+        "description": "Perfect for families with two queen-sized beds and plenty of space.",
+        "price": 250
+      }
+    ],
+    "location": {
+      "lat": 37.7749,
+      "lng": -122.4194
+    },
+    "amenities": [
+      "Free WiFi",
+      "24-hour front desk",
+      "Concierge service",
+      "Fitness center",
+      "Indoor pool",
+      "On-site restaurant",
+      "Room service"
+    ]
+  },
+  {
+    "name": "City Center Hotel",
+    "nightlyPrice": 180,
+    "cardBackground": "https://images.unsplash.com/photo-1645226626345-fc884e2d8fcf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80",
     "address": "321 Broadway, Downtown USA",
     "photos": [
       "https://picsum.photos/300/200?random=16",
