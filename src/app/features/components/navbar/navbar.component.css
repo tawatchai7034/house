@@ -9,6 +9,7 @@
   text-align: center;
   align-items: center;
   padding: 15px;
+
 }
 
 .button-section {
@@ -75,4 +76,45 @@
   transition: ease-in-out 0.5s;
   border: none;
   border-radius: 8px;
+}
+
+/*Active Classes*/
+
+:host(.active) .navbar-container {
+  background-color: #fff;
+  border-bottom: 1px solid #8dd3bb;
+}
+
+:host(.active) .login-button {
+  color: #000;
+}
+
+:host(.active) .company-name {
+  width: 300px;
+  padding: 10px;
+  color: #000;
+}
+
+:host(.active) .sign-up-button {
+  width: 125px;
+  background-color: #8dd3bb;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+}
+
+:host(.active) .hotels-button svg {
+  fill: #000;
+}
+
+:host(.active) .hotels-button {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  border: none;
+  color: #000
 }
