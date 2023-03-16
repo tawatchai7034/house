@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import * as HotelsActions from "./features/store/hotels.actions";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-root',
@@ -7,5 +9,12 @@ import {Component} from '@angular/core';
   `,
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private store: Store) {
+
+  }
+
+  ngOnInit() {
+    this.store.dispatch(HotelsActions.loadHotels());
+  }
 }

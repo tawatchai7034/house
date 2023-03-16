@@ -31,7 +31,7 @@ import * as HotelsActions from "../../store/hotels.actions";
   `,
   styleUrls: ['./content.component.css'],
 })
-export class ContentComponent implements OnInit {
+export class ContentComponent {
   isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
   hotels$: Observable<HotelDataModel[]>;
@@ -44,9 +44,5 @@ export class ContentComponent implements OnInit {
     this.hotels$ = this.store.pipe(select(hotelsSelector));
     //
     this.hotels$.subscribe((data) => console.log(data))
-  }
-
-  ngOnInit() {
-    this.store.dispatch(HotelsActions.loadHotels());
   }
 }

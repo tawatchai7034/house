@@ -81,8 +81,11 @@
 /*Active Classes*/
 
 :host(.active) .navbar-container {
-  background-color: #fff;
-  border-bottom: 1px solid #8dd3bb;
+  padding-left: 50px;
+  padding-right: 70px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(17, 34, 17, 0.05);
 }
 
 :host(.active) .login-button {

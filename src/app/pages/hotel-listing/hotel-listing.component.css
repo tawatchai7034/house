@@ -1,0 +1,7 @@
+.hotels-listing-container {
+  margin-top: 30px;
+  margin-left: 85px;
+  margin-right: 85px;
+  display: flex;
+  justify-content: space-between;
+}
