@@ -21,6 +21,8 @@ import {HotelListingComponent} from './pages/hotel-listing/hotel-listing.compone
 import {FiltersCardComponent} from './features/components/filters-card/filters-card.component';
 import {HotelsFiltersComponent} from './features/components/hotels-filters/hotels-filters.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
     FiltersCardComponent,
     HotelsFiltersComponent,
+    LoginComponent,
+    SignUpComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, StoreModule.forRoot(
     {}, {}

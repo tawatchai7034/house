@@ -1,0 +1,152 @@
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 85px;
+  margin-right: 85px;
+  padding-top: 104px;
+  gap: 100px
+}
+
+.login-inputs-container {
+  display: block;
+  width: 50%;
+}
+
+.login-image {
+  background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80');
+  background-position: center;
+  background-size: cover;
+  border-radius: 30px;
+  width: 100%;
+  height: auto;
+}
+
+.login-image img {
+  display: none;
+}
+
+.logo {
+  margin-bottom: 64px;
+}
+
+.login-title {
+  width: 123px;
+  height: 51px;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.login-description {
+  width: 400px;
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  width: 512px;
+  height: 56px;
+  margin-top: 35px;
+  margin-bottom: 55px;
+}
+
+.input-container > input {
+  background: #fff;
+  border: 1px solid #79747E;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.password-section {
+  width: 510px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.forgot-password-button {
+  background: none;
+  border: none;
+  color: #ff8682;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 512px;
+  height: auto;
+}
+
+.login-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  padding: 8px 16px;
+  gap: 4px;
+  background: #8DD3BB;
+  border-radius: 4px;
+  border: none
+}
+
+.signup-container {
+  display: flex;
+  background-color: #FF8682;
+  align-items: center;
+}
+
+.login-with-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.login-with-container::before,
+.login-with-container::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background: #112211;
+  opacity: 0.25;
+}
+
+.login-with-container::before {
+  margin-right: 8px;
+}
+
+.login-with-container::after {
+  margin-left: 8px;
+}
+
+.social-login-buttons {
+  display: flex;
+  gap: 16px
+}
+
+.social-login-buttons button {
+  padding: 16px 24px;
+  width: 160px;
+  height: 56px;
+  border: 1px solid #8DD3BB;
+  border-radius: 4px;
+  background: none;
+}
+
+.social-login-buttons button img {
+  width: 24px;
+  height: 24px;
+}
+
+p > a {
+  color: #FF8682;
+  text-decoration: none;
+}

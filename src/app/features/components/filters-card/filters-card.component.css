@@ -89,9 +89,9 @@ br {
 
 .card-address {
   display: flex;
-  gap: 5px;
+  align-items: flex-start;
+  gap: 8px;
   width: 70%;
-
 }
 
 .card-rating {
