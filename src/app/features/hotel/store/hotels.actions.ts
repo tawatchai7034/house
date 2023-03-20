@@ -1,5 +1,5 @@
-import { createAction, props } from '@ngrx/store';
-import { HotelDataModel } from 'src/app/features/store/hotel.model';
+import {createAction, props} from '@ngrx/store';
+import {HotelDataModel} from 'src/app/features/hotel/store/hotel.model';
 
 export const loadHotels = createAction('[Hotels] Load Hotels');
 export const loadHotelsSuccess = createAction(

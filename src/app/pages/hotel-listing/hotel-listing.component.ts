@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {map, Observable} from "rxjs";
-import {HotelDataModel} from "../../features/store/hotel.model";
+import {HotelDataModel} from "../../features/hotel/store/hotel.model";
 import {select, Store} from "@ngrx/store";
 import {AppStateInterface} from "../../core/models/app-state.model";
-import {errorSelector, hotelsSelector, isLoadingSelector} from "../../features/store/hotels.selectors";
+import {errorSelector, hotelsSelector, isLoadingSelector} from "../../features/hotel/store/hotels.selectors";
 
 @Component({
   selector: 'app-hotel-listing',

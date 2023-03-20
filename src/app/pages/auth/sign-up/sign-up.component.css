@@ -5,11 +5,10 @@
   margin-right: 85px;
   padding-top: 40px;
   gap: 100px;
-
+  height: 850px;
 }
 
 .form-container {
-
   width: 60%;
 }
 
@@ -62,8 +61,6 @@
   width: 100%;
   margin-top: 35px;
   margin-bottom: 55px;
-
-
 }
 
 .input-container input {
@@ -106,44 +103,6 @@
   height: 48px;
 }
 
-.signup-with-container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.signup-with-container::before,
-.signup-with-container::after {
-  content: "";
-  flex-grow: 1;
-  height: 1px;
-  background: #112211;
-  opacity: 0.25;
-}
-
-.signup-with-container::before {
-  margin-right: 8px;
-}
-
-.signup-with-container::after {
-  margin-left: 8px;
-}
-
-.social-login-buttons {
-  display: flex;
-  gap: 16px
-}
-
-.social-login-buttons button {
-  padding: 16px 24px;
-  width: 160px;
-  height: 56px;
-  border: 1px solid #8DD3BB;
-  border-radius: 4px;
-  background: none;
-}
-
-.social-login-buttons button img {
-  width: 24px;
-  height: 24px;
+span {
+  color: #FF8682;
 }

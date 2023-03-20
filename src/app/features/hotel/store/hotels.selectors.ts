@@ -1,6 +1,5 @@
-import {AppStateInterface} from "../../core/models/app-state.model";
+import {AppStateInterface} from "../../../core/models/app-state.model";
 import {createSelector} from "@ngrx/store";
-
 
 
 export const selectFeature = (state: AppStateInterface) => {
@@ -17,5 +16,5 @@ export const hotelsSelector = createSelector(
 )
 export const errorSelector = createSelector(
   selectFeature,
-  (state:any) => state.error
+  (state: any) => state.error
 )

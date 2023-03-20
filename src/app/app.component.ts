@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import * as HotelsActions from "./features/store/hotels.actions";
+import * as HotelsActions from "./features/hotel/store/hotels.actions";
 import {Store} from "@ngrx/store";
 
 @Component({

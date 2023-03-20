@@ -1,4 +1,4 @@
-import { HotelDataModel } from '../../features/store/hotel.model'
+import {HotelDataModel} from '../../features/hotel/store/hotel.model'
 
 export interface HotelsStateInterface {
   hotels: HotelDataModel[];

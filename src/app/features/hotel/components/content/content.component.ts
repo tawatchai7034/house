@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {HotelDataModel} from "../../store/hotel.model";
 import {select, Store} from "@ngrx/store";
-import {AppStateInterface} from "../../../core/models/app-state.model";
+import {AppStateInterface} from "../../../../core/models/app-state.model";
 import {errorSelector, hotelsSelector, isLoadingSelector} from "../../store/hotels.selectors";
 import * as HotelsActions from "../../store/hotels.actions";
 

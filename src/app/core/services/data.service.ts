@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { HotelDataModel } from '../../features/store/hotel.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {HotelDataModel} from '../../features/hotel/store/hotel.model';
+
 @Injectable({
   providedIn: 'root',
 })
