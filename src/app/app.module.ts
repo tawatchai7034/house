@@ -15,6 +15,7 @@ import { HotelModule } from './features/hotel/hotel.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './features/auth/auth.module';
+import { AccountModule } from './features/account/account.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AuthModule } from './features/auth/auth.module';
     SignUpComponent,
   ],
   imports: [
+    AccountModule,
     AuthModule,
     SharedModule,
     HotelModule,
