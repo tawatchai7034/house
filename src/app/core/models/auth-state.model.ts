@@ -1,4 +1,7 @@
-import {AuthLoginModel, AuthSignupModel} from "../../features/auth/store/auth.model";
+import {
+  AuthLoginModel,
+  AuthSignupModel,
+} from '../../features/auth/store/auth.model';
 
 export interface AuthStateInterface {
   loggedInUser: AuthLoginModel[] | null;

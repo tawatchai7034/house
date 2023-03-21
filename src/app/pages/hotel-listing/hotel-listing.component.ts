@@ -1,14 +1,17 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {map, Observable} from "rxjs";
-import {HotelDataModel} from "../../features/hotel/store/hotel.model";
-import {select, Store} from "@ngrx/store";
-import {AppStateInterface} from "../../core/models/app-state.model";
-import {errorSelector, hotelsSelector, isLoadingSelector} from "../../features/hotel/store/hotels.selectors";
+import { Component, Input, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { HotelDataModel } from '../../features/hotel/store/hotel.model';
+import { select, Store } from '@ngrx/store';
+import { AppStateInterface } from '../../core/models/app-state.model';
+import {
+  errorSelector,
+  hotelsSelector,
+  isLoadingSelector,
+} from '../../features/hotel/store/hotels.selectors';
 
 @Component({
   selector: 'app-hotel-listing',
   template: `
-
     <app-navbar class="active"></app-navbar>
     <app-search-bar class="active"></app-search-bar>
     <div class="hotels-listing-container">
@@ -17,9 +20,8 @@ import {errorSelector, hotelsSelector, isLoadingSelector} from "../../features/h
     </div>
     <app-newsletter style="position: relative; top: +240px;"></app-newsletter>
     <app-footer></app-footer>
-
   `,
-  styleUrls: ['./hotel-listing.component.css']
+  styleUrls: ['./hotel-listing.component.css'],
 })
 export class HotelListingComponent implements OnInit {
   data: any;
@@ -36,23 +38,25 @@ export class HotelListingComponent implements OnInit {
     this.error$ = this.store.pipe(select(errorSelector));
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.hotels$ = this.store.pipe(select(hotelsSelector));
-
   }
 
   ngOnInit() {
     this.hotels$
       .pipe(
         map((hotels) => ({
-          hotelCount: hotels.filter((hotel) => hotel.accommodationType === "hotel")
-            .length,
-          motelCount: hotels.filter((hotel) => hotel.accommodationType === "motel")
-            .length,
-          resortCount: hotels.filter((hotel) => hotel.accommodationType === "resort")
-            .length,
+          hotelCount: hotels.filter(
+            (hotel) => hotel.accommodationType === 'hotel'
+          ).length,
+          motelCount: hotels.filter(
+            (hotel) => hotel.accommodationType === 'motel'
+          ).length,
+          resortCount: hotels.filter(
+            (hotel) => hotel.accommodationType === 'resort'
+          ).length,
           totalCount: hotels.length,
         }))
       )
-      .subscribe(({hotelCount, motelCount, resortCount, totalCount}) => {
+      .subscribe(({ hotelCount, motelCount, resortCount, totalCount }) => {
         this.data = {
           isLoading$: this.isLoading$,
           error$: this.error$,

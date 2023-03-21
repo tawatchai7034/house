@@ -1,6 +1,6 @@
-import {HotelsStateInterface} from "../../../core/models/hotels-state.model";
-import {createReducer, on} from "@ngrx/store";
-import * as HotelsActions from "./hotels.actions";
+import { HotelsStateInterface } from '../../../core/models/hotels-state.model';
+import { createReducer, on } from '@ngrx/store';
+import * as HotelsActions from './hotels.actions';
 
 export const initialState: HotelsStateInterface = {
   hotels: [],
@@ -25,4 +25,3 @@ export const hotelReducer = createReducer(
     isLoading: false,
   }))
 );
-

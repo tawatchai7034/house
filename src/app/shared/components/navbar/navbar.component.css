@@ -9,7 +9,6 @@
   text-align: center;
   align-items: center;
   padding: 15px;
-
 }
 
 .button-section {
@@ -57,7 +56,7 @@
 
 .hotels-section {
   width: 190px;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
 .hotels-button {
@@ -68,7 +67,7 @@
   gap: 5px;
   padding: 10px;
   border: none;
-  color: #fff
+  color: #fff;
 }
 
 .hotels-button:hover {
@@ -119,5 +118,5 @@
   gap: 5px;
   padding: 10px;
   border: none;
-  color: #000
+  color: #000;
 }

@@ -1,5 +1,5 @@
-import {createAction, props} from '@ngrx/store';
-import {AuthLoginModel, AuthSignupModel} from "./auth.model";
+import { createAction, props } from '@ngrx/store';
+import { AuthLoginModel, AuthSignupModel } from './auth.model';
 
 export const login = createAction(
   '[Auth] Login',
@@ -15,7 +15,13 @@ export const loginFailure = createAction(
 );
 export const signUp = createAction(
   '[Auth] signUp',
-  props<{ firstName: string; lastName: string; email: string; phoneNumber: number; password: string }>()
+  props<{
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: number;
+    password: string;
+  }>()
 );
 export const signUpSuccess = createAction(
   '[Auth] signUp Success',
@@ -42,4 +48,3 @@ export const signUpFailure = createAction(
 // //   '[Auth] Reset Password Failure',
 // //   props<{ error: string }>()
 // // );
-

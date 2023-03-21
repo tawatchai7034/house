@@ -1,41 +1,69 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import * as AuthActions from "../../../features/auth/store/auth.actions";
-import * as AuthSelectors from "../../../features/auth/store/auth.selectors";
-import {AppStateInterface} from "../../../core/models/app-state.model";
-import {Store} from "@ngrx/store";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as AuthActions from '../../../features/auth/store/auth.actions';
+import * as AuthSelectors from '../../../features/auth/store/auth.selectors';
+import { AppStateInterface } from '../../../core/models/app-state.model';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
   template: `
-
     <div class="signup-container">
       <div class="signup-image"></div>
-      <form class="form-container" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <form
+        class="form-container"
+        [formGroup]="signUpForm"
+        (ngSubmit)="onSubmit()"
+      >
         <h1 class="logo">Enoca</h1>
 
         <h3 class="login-title">Sign up</h3>
-        <p class="login-description">Let’s get you all st up so you can access your personal account.</p>
+        <p class="login-description">
+          Let’s get you all st up so you can access your personal account.
+        </p>
 
         <section class="input-container">
           <div class="form-row">
-            <input type="text" placeholder="First Name" formControlName="firstName"/>
-            <input type="text" placeholder="Last Name" formControlName="lastName"/>
+            <input
+              type="text"
+              placeholder="First Name"
+              formControlName="firstName"
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              formControlName="lastName"
+            />
           </div>
           <div class="form-row">
-            <input type="email" placeholder="Email" formControlName="email"/>
-            <input type="number" placeholder="Phone Number" formControlName="phoneNumber"/>
+            <input type="email" placeholder="Email" formControlName="email" />
+            <input
+              type="number"
+              placeholder="Phone Number"
+              formControlName="phoneNumber"
+            />
           </div>
           <div class="form-col">
-            <input type="password" placeholder="Password" formControlName="password"/>
-            <input type="password" placeholder="Confirm Password" formControlName="confirmPassword"/>
+            <input
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              formControlName="confirmPassword"
+            />
           </div>
         </section>
 
         <section class="terms">
-          <input type="checkbox"/>
-          <label>I agree to all <span>Terms </span>and <span> Privacy Policies </span></label>
+          <input type="checkbox" />
+          <label
+            >I agree to all <span>Terms </span>and
+            <span> Privacy Policies </span></label
+          >
         </section>
 
         <section class="button-container">
@@ -45,35 +73,68 @@ import {Router} from "@angular/router";
       </form>
     </div>
   `,
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private store: Store<AppStateInterface>, private router: Router) {
-    this.signUpForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('^[a-zA-Z]*$')]],
-      lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('^[a-zA-Z]*$')]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(11), Validators.maxLength(11)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-    }, {validators: this.passwordMatchValidator});
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<AppStateInterface>,
+    private router: Router
+  ) {
+    this.signUpForm = this.fb.group(
+      {
+        firstName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(10),
+            Validators.pattern('^[a-zA-Z]*$'),
+          ],
+        ],
+        lastName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(10),
+            Validators.pattern('^[a-zA-Z]*$'),
+          ],
+        ],
+        phoneNumber: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern('^[0-9]*$'),
+            Validators.minLength(11),
+            Validators.maxLength(11),
+          ],
+        ],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required],
+        confirmPassword: ['', Validators.required],
+      },
+      { validators: this.passwordMatchValidator }
+    );
   }
 
   ngOnInit() {
-    this.store.select(AuthSelectors.signUpUserSelector).subscribe(signUpUser => {
-      if (signUpUser) {
-        console.log('Sign up successful');
-        this.router.navigate(['/login']);
-      }
-    })
+    this.store
+      .select(AuthSelectors.signUpUserSelector)
+      .subscribe((signUpUser) => {
+        if (signUpUser) {
+          console.log('Sign up successful');
+          this.router.navigate(['/login']);
+        }
+      });
   }
 
   passwordMatchValidator(formGroup: FormGroup) {
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : {mismatchedPasswords: true};
+    return password === confirmPassword ? null : { mismatchedPasswords: true };
   }
 
   onSubmit() {
@@ -86,6 +147,8 @@ export class SignUpComponent implements OnInit {
     const email = this.signUpForm.get('email')?.value;
     const password = this.signUpForm.get('password')?.value;
 
-    this.store.dispatch((AuthActions.signUp({firstName, lastName, email, phoneNumber, password})))
+    this.store.dispatch(
+      AuthActions.signUp({ firstName, lastName, email, phoneNumber, password })
+    );
   }
 }

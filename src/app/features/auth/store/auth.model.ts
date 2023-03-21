@@ -1,7 +1,6 @@
 export interface AuthLoginModel {
   email: string;
   password: string;
-
 }
 
 export interface AuthSignupModel {
