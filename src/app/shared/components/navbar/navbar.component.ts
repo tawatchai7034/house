@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppStateInterface } from 'src/app/core/models/app-state.model';
+import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors';
 
 @Component({
   selector: 'app-navbar',
@@ -29,7 +32,7 @@ import { Component } from '@angular/core';
         <li class="company-name">
           <h3>Enoca Booking</h3>
         </li>
-        <li class="button-section">
+        <li class="button-section" *ngIf="!(loggedInUser$ | async)">
           <button class="login-button" routerLink="/login">Login</button>
           <button class="sign-up-button" routerLink="/sign-up">Sign Up</button>
         </li>
@@ -40,6 +43,16 @@ import { Component } from '@angular/core';
   `,
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
-  constructor() {}
+export class NavbarComponent implements OnInit {
+  loggedInUser$ = this.store.select(loggedInUserSelector);
+  constructor(private store: Store<AppStateInterface>) {}
+  ngOnInit(): void {
+    this.loggedInUser$.subscribe((loggedInUser) => {
+      if (loggedInUser && loggedInUser.length > 0) {
+        console.log('User is logged in');
+      } else {
+        console.log('User is not logged in');
+      }
+    });
+  }
 }

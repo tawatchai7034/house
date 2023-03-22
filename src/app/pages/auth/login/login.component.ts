@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
       .select(AuthSelectors.loggedInUserSelector)
       .subscribe((loggedInUser) => {
         if (loggedInUser) {
-          console.log('Login successful');
+          console.log('Login Successful');
           this.router.navigate(['/']);
         }
       });

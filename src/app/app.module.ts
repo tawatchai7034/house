@@ -16,7 +16,7 @@ import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './features/auth/auth.module';
 import { AccountModule } from './features/account/account.module';
-
+import { AccountComponent } from './pages/account/account.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +24,7 @@ import { AccountModule } from './features/account/account.module';
     HotelListingComponent,
     LoginComponent,
     SignUpComponent,
+    AccountComponent,
   ],
   imports: [
     AccountModule,
@@ -33,7 +34,6 @@ import { AccountModule } from './features/account/account.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({

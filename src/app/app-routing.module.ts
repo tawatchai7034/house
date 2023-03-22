@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HotelListingComponent } from './pages/hotel-listing/hotel-listing.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
+import { AccountComponent } from './pages/account/account.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: 'sign-up',
     component: SignUpComponent,
+  },
+
+  {
+    path: 'account',
+    component: AccountComponent,
   },
 ];
 

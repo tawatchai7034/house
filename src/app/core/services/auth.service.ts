@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import {
   AuthLoginModel,
   AuthSignupModel,
@@ -13,10 +13,18 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<AuthLoginModel> {
-    return this.http.post<AuthLoginModel>('http://localhost:8000/user/login', {
-      email,
-      password,
-    });
+    return this.http
+      .post<AuthLoginModel>('http://localhost:8000/user/login', {
+        email,
+        password,
+      })
+      .pipe(
+        map((response: any) => {
+          localStorage.setItem('currentUser', JSON.stringify(response.user));
+          localStorage.setItem('token', response.token);
+          return response.user;
+        })
+      );
   }
 
   signUp(
