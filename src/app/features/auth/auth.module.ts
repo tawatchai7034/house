@@ -4,8 +4,19 @@ import { SocialButtonsComponent } from './components/social-buttons/social-butto
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/auth.effects';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, StoreModule } from '@ngrx/store';
 import { AuthReducer } from './store/auth.reducers';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import { AuthStateInterface } from 'src/app/core/models/auth-state.model';
+
+export function localStorageSyncAuthReducer(
+  reducer: ActionReducer<AuthStateInterface>
+): ActionReducer<AuthStateInterface> {
+  return localStorageSync({
+    keys: ['loggedInUser'],
+    rehydrate: true,
+  })(reducer);
+}
 
 @NgModule({
   declarations: [SocialButtonsComponent],
@@ -14,7 +25,9 @@ import { AuthReducer } from './store/auth.reducers';
     FormsModule,
     ReactiveFormsModule,
     EffectsModule.forFeature([AuthEffects]),
-    StoreModule.forFeature('auth', AuthReducer),
+    StoreModule.forFeature('auth', AuthReducer, {
+      metaReducers: [localStorageSyncAuthReducer],
+    }),
   ],
   exports: [SocialButtonsComponent],
 })

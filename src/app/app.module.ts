@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './features/auth/auth.module';
 import { AccountModule } from './features/account/account.module';
 import { AccountComponent } from './pages/account/account.component';
+
 @NgModule({
   declarations: [
     AppComponent,

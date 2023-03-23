@@ -20,7 +20,7 @@ export const AuthReducer = createReducer(
   })),
   on(AuthActions.signUpSuccess, (state, action) => ({
     ...state,
-    loggedInUser: action.signUpUser,
+    signUpUser: action.signUpUser,
   })),
   on(AuthActions.signUpFailure, (state, action) => ({
     ...state,

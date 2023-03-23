@@ -32,10 +32,25 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
         <li class="company-name">
           <h3>Enoca Booking</h3>
         </li>
-        <li class="button-section" *ngIf="!(loggedInUser$ | async)">
+        <li
+          class="button-section"
+          *ngIf="!(loggedInUser$ | async); else loggedInTrue"
+        >
           <button class="login-button" routerLink="/login">Login</button>
           <button class="sign-up-button" routerLink="/sign-up">Sign Up</button>
         </li>
+        <ng-template #loggedInTrue>
+          <div class="logged-in-container">
+            <img src="assets/icons/heart.svg" alt="heart" />
+            <span class="user-favourites">Favourites |</span>
+            <img
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80"
+              alt="avatar"
+              class="user-avatar"
+            />
+            <span class="user-name">{{ firstName }}</span>
+          </div>
+        </ng-template>
       </ul>
     </nav>
 
@@ -45,11 +60,15 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
 })
 export class NavbarComponent implements OnInit {
   loggedInUser$ = this.store.select(loggedInUserSelector);
+  firstName: string = '';
+
   constructor(private store: Store<AppStateInterface>) {}
+
   ngOnInit(): void {
     this.loggedInUser$.subscribe((loggedInUser) => {
       if (loggedInUser && loggedInUser.length > 0) {
         console.log('User is logged in');
+        this.firstName = loggedInUser[0].user.firstName;
       } else {
         console.log('User is not logged in');
       }

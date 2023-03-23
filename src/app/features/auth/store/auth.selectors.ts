@@ -8,6 +8,7 @@ export const loggedInUserSelector = createSelector(
   authFeatureSelector,
   (state: AuthStateInterface) => state.loggedInUser
 );
+
 export const signUpUserSelector = createSelector(
   authFeatureSelector,
   (state: AuthStateInterface) => state.signUpUser
