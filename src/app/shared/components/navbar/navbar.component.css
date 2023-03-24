@@ -52,6 +52,7 @@
   width: 300px;
   padding: 10px;
   color: #fff;
+  cursor: pointer;
 }
 
 .hotels-section {
@@ -134,4 +135,11 @@
   margin-left: 10px;
   background-size: contain;
   object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8dd3bb;
+}
+:host(.active) .logged-in-container {
+  color: #000;
 }

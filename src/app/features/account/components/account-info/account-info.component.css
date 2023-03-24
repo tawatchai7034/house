@@ -1,0 +1,91 @@
+.edit-account-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  margin-top: 40px;
+}
+.edit-account-info:not(:last-of-type) {
+  margin-bottom: 40px;
+}
+.edit-account-info-title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: normal;
+  color: rgba(0, 0, 0, 1);
+  align-self: stretch;
+  margin-bottom: 16px;
+}
+.edit-user-name {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 16px 0 rgba(17, 34, 17, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+}
+.edit-user-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+}
+.edit-user-name-container:not(:last-of-type) {
+  margin-bottom: 32px;
+}
+.name-label-and-value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.user-name {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  color: #112211;
+  margin-bottom: 8px;
+  opacity: 0.75;
+}
+.user-name-value {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  color: #112211;
+}
+
+.add-email-button-container {
+  display: flex;
+  align-items: flex-start;
+}
+.button-two {
+  margin-right: 8px;
+}
+
+.edit-button-container {
+  border-radius: 4px;
+  padding: 7px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #8dd3bb;
+  margin-right: 24px;
+}
+.edit-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+.button {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: #112211;
+}
+hr {
+  width: 48px;
+  height: 0px;
+  border: 1px solid #d7e2ee;
+  transform: rotate(90deg);
+}

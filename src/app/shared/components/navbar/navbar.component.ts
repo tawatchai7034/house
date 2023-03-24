@@ -30,7 +30,7 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
           </button>
         </li>
         <li class="company-name">
-          <h3>Enoca Booking</h3>
+          <h3 routerLink="/">Enoca Booking</h3>
         </li>
         <li
           class="button-section"
@@ -43,11 +43,7 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
           <div class="logged-in-container">
             <img src="assets/icons/heart.svg" alt="heart" />
             <span class="user-favourites">Favourites |</span>
-            <img
-              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80"
-              alt="avatar"
-              class="user-avatar"
-            />
+            <span class="user-avatar">{{ firstName | logo }}</span>
             <span class="user-name">{{ firstName }}</span>
           </div>
         </ng-template>
