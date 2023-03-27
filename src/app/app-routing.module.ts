@@ -5,6 +5,7 @@ import { HotelListingComponent } from './pages/hotel-listing/hotel-listing.compo
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
 import { AccountComponent } from './pages/account/account.component';
+import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent,
+  },
+  {
+    path: 'hotel-listing/:name',
+    component: HotelDetailsComponent,
   },
 ];
 

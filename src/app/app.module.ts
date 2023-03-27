@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './features/auth/auth.module';
 import { AccountModule } from './features/account/account.module';
 import { AccountComponent } from './pages/account/account.component';
+import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AccountComponent } from './pages/account/account.component';
     LoginComponent,
     SignUpComponent,
     AccountComponent,
+    HotelDetailsComponent,
   ],
   imports: [
     AccountModule,
