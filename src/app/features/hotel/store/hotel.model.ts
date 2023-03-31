@@ -9,5 +9,5 @@ export interface HotelDataModel {
   overview: string;
   accommodationType: string;
   photos: string[];
-  rooms: { name: string; description: string; price: number }[];
+  rooms: { name: string; description: string; price: number };
 }

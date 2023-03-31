@@ -18,6 +18,7 @@ import { AuthModule } from './features/auth/auth.module';
 import { AccountModule } from './features/account/account.module';
 import { AccountComponent } from './pages/account/account.component';
 import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.compo
     SignUpComponent,
     AccountComponent,
     HotelDetailsComponent,
+    PaymentComponent,
   ],
   imports: [
     AccountModule,

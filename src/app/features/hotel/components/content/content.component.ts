@@ -8,7 +8,6 @@ import {
   hotelsSelector,
   isLoadingSelector,
 } from '../../store/hotels.selectors';
-import * as HotelsActions from '../../store/hotels.actions';
 
 @Component({
   selector: 'app-content',

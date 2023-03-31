@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStateInterface } from 'src/app/core/models/app-state.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import slugify from 'slugify';
 
 @Component({
@@ -49,7 +49,9 @@ import slugify from 'slugify';
           <button class="button-small">
             <img src="assets/icons/share.svg" alt="share-icon" />
           </button>
-          <button class="button-book">Book now</button>
+          <button class="button-book" (click)="scrollToRoomsHeader()">
+            Book now
+          </button>
         </div>
       </div>
     </div>
@@ -94,7 +96,7 @@ import slugify from 'slugify';
     </div>
     <hr />
     <div class="avaiable-rooms-container">
-      <div class="rooms-header">
+      <div class="rooms-header" #roomsHeader>
         <p>Avaiable Rooms</p>
       </div>
       <div *ngFor="let room of hotel.rooms" class="rooms-details-container">
@@ -104,7 +106,7 @@ import slugify from 'slugify';
         </div>
         <div class="rooms-price">
           <span>{{ room.price | currency }} </span>/night
-          <button>Book now</button>
+          <button (click)="bookRoom(room)">Book now</button>
         </div>
       </div>
     </div>
@@ -128,8 +130,10 @@ import slugify from 'slugify';
 export class HotelDetailsComponent implements OnInit {
   hotel: any;
   categories: string[] = [];
+  @ViewChild('roomsHeader') roomsHeader!: ElementRef;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private store: Store<AppStateInterface>
   ) {}
@@ -144,6 +148,17 @@ export class HotelDetailsComponent implements OnInit {
           this.categories = this.hotel.amenities.slice(0, 4);
         }
       });
+    });
+  }
+  bookRoom(room: any) {
+    localStorage.setItem('roomName', room.name);
+    localStorage.setItem('roomPrice', room.price.toString());
+    localStorage.setItem('hotelName', this.hotel.name);
+    this.router.navigate(['/payment']);
+  }
+  scrollToRoomsHeader() {
+    this.roomsHeader.nativeElement.scrollIntoView({
+      behavior: 'smooth',
     });
   }
 }

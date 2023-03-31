@@ -37,17 +37,36 @@
 .inputs-container input {
   flex: 1;
   margin-right: 10px;
-  border: 1px solid #79747E;
+  border: 1px solid #79747e;
   border-radius: 4px 4px 0 0;
   padding: 16px;
 }
-
 
 .inputs-container input:focus {
   border: 1px solid #8dd3bb;
   outline: none;
 }
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: #fff;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.search-result-item {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
 
+.search-result-item:last-child {
+  border-bottom: none;
+}
 .buttons-container {
   padding: 10px;
   justify-content: flex-end;
@@ -101,7 +120,6 @@ button {
 
 .modal-body p {
   width: 25%;
-
 }
 
 .modal-body section {
@@ -127,9 +145,9 @@ button {
 }
 
 :host(.active) .section-title {
-  display: none
+  display: none;
 }
 
 .error {
-  border-color: red
+  border-color: red;
 }

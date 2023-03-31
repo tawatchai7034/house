@@ -1,6 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors} from "@angular/forms";
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { select, Store } from '@ngrx/store';
+import { filter, Observable } from 'rxjs';
+import { AppStateInterface } from 'src/app/core/models/app-state.model';
+import { HotelDataModel } from '../../store/hotel.model';
+import { hotelsSelector } from '../../store/hotels.selectors';
 
 @Component({
   selector: 'app-search-bar',
@@ -13,35 +24,80 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
         </section>
         <form [formGroup]="form" (ngSubmit)="submit()">
           <section class="inputs-container">
-            <input type="text" placeholder="Enter Destination" formControlName="destination"/>
-            <input type="date" placeholder="Check In" formControlName="checkIn" [min]="today"/>
-            <input type="date" placeholder="Check Out" formControlName="checkOut" [min]="today"
-                   [ngClass]="{'error': checkOutControl?.invalid}"/>
-            <input type="text" id="rooms-guests-input" placeholder="Rooms & Guests" formControlName="roomsGuests"
-                   (click)="openModal(content)"/>
+            <input
+              type="text"
+              placeholder="Enter Destination"
+              formControlName="destination"
+              (keyup)="searchHotels($event)"
+              (focus)="destinationInputFocused = true"
+              (blur)="destinationInputFocused = false"
+            />
+            <ul
+              class="search-results"
+              *ngIf="destinationInputFocused && hotelNames.length > 0"
+            >
+              <li
+                class="search-result-item"
+                *ngFor="let hotel of hotels$ | async"
+              >
+                {{ hotel.name }}
+              </li>
+            </ul>
+
+            <input
+              type="date"
+              placeholder="Check In"
+              formControlName="checkIn"
+              [min]="today"
+            />
+            <input
+              type="date"
+              placeholder="Check Out"
+              formControlName="checkOut"
+              [min]="today"
+              [ngClass]="{ error: checkOutControl?.invalid }"
+            />
+            <input
+              type="text"
+              id="rooms-guests-input"
+              placeholder="Rooms & Guests"
+              formControlName="roomsGuests"
+              (click)="openModal(content)"
+            />
             <ng-template #content let-modal>
               <div class="modal-header">
                 <h4 class="modal-title">Select Rooms and Guests</h4>
-                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 <div *ngFor="let item of ['rooms', 'adults', 'children']">
-                  <p>{{item}}</p>
+                  <p>{{ item }}</p>
                   <section>
                     <button (click)="updateGuestsData(item, -1)">
-                      <img src="assets/icons/minus.svg" alt="minus_icon"/>
+                      <img src="assets/icons/minus.svg" alt="minus_icon" />
                     </button>
-                    <label>{{guestsData[item]}}</label>
+                    <label>{{ guestsData[item] }}</label>
                     <button (click)="updateGuestsData(item, +1)">
-                      <img src="assets/icons/plus.svg" alt="plus_icon"/>
+                      <img src="assets/icons/plus.svg" alt="plus_icon" />
                     </button>
                   </section>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Done</button>
+                <button
+                  type="button"
+                  class="btn btn-outline-dark"
+                  (click)="modal.close('Close click')"
+                >
+                  Done
+                </button>
               </div>
             </ng-template>
           </section>
@@ -59,16 +115,22 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class SearchBarComponent {
   today = new Date().toISOString().split('T')[0];
-  form: FormGroup
-
+  form: FormGroup;
+  hotels$: Observable<HotelDataModel[]>;
+  hotelNames: string[] = [];
+  destinationInputFocused = false;
 
   guestsData: GuestsData = {
     rooms: 1,
     adults: 1,
-    children: 0
+    children: 0,
   };
 
-  constructor(private fb: FormBuilder, private modalService: NgbModal) {
+  constructor(
+    private fb: FormBuilder,
+    private modalService: NgbModal,
+    private store: Store<AppStateInterface>
+  ) {
     this.form = this.fb.group({
       destination: '',
       checkIn: ['', Validators.required],
@@ -79,6 +141,17 @@ export class SearchBarComponent {
     if (checkOutControl) {
       checkOutControl.setValidators(this.checkOutValidator.bind(this));
     }
+    this.hotels$ = this.store.pipe(select(hotelsSelector));
+    this.hotels$.pipe(filter((hotels) => !!hotels)).subscribe((hotels) => {
+      this.hotelNames = hotels.map((hotel) => hotel.name);
+    });
+  }
+  searchHotels(event: any) {
+    const value = event.target.value;
+    const results = this.hotelNames.filter((name) =>
+      name.toLowerCase().includes(value.toLowerCase())
+    );
+    console.log(results);
   }
 
   get checkOutControl() {
@@ -96,7 +169,7 @@ export class SearchBarComponent {
       const checkOutDate = new Date(control.value);
       if (checkOutDate <= checkInDate) {
         console.log('Invalid check-out date');
-        return {invalidCheckOutDate: true};
+        return { invalidCheckOutDate: true };
       }
     }
     return null;
@@ -117,12 +190,12 @@ export class SearchBarComponent {
 
   updateRoomsGuests() {
     this.form.patchValue({
-      roomsGuests: `${this.guestsData['rooms']} Rooms, ${this.guestsData['adults']} Adults, ${this.guestsData['children']} Children`
-    })
+      roomsGuests: `${this.guestsData['rooms']} Rooms, ${this.guestsData['adults']} Adults, ${this.guestsData['children']} Children`,
+    });
   }
 
   submit() {
-    console.log(this.form.value)
+    console.log(this.form.value);
   }
 }
 

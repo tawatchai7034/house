@@ -1,0 +1,142 @@
+.payment-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.payment-info-container {
+  width: 60%;
+  margin-bottom: 70px;
+}
+
+.room-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.room-price {
+  font-weight: 700;
+  color: #ff8682;
+}
+.room-price span {
+  font-size: 32px;
+}
+.hotel-info {
+  border: 0.5px solid #8dd3bb;
+  padding: 32px 0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  gap: 8px;
+}
+.check-in-out {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.check-in-out img {
+  width: 48px;
+  height: 48px;
+}
+.login-signup-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 40px;
+}
+.login-signup-container button {
+  padding: 8px 16px;
+  background: #8dd3bb;
+  border-radius: 4px;
+  border: none;
+  width: 300px;
+}
+.login-signup-text {
+  border-bottom: 1px solid black;
+}
+.card-container {
+  width: 40%;
+  padding: 0 32px;
+}
+.card-hotel-image-info {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+.card-hotel-image-info img {
+  padding: 16px;
+  width: 121px;
+  height: 120px;
+  border-radius: 12px;
+}
+.card-hotel-info {
+  width: 70%;
+}
+.card-hotel-room-name {
+  font-weight: 600;
+}
+.card-hotel-rating {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+.rating-score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  width: 40px;
+  height: 32px;
+  border: 1px solid #8dd3bb;
+  border-radius: 4px;
+}
+.price-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+.price-info {
+  display: flex;
+}
+.price-labels,
+.price-values {
+  display: flex;
+  flex-direction: column;
+}
+.price-details-text {
+  font-weight: 700;
+  padding: 0 32px;
+}
+.cc-container {
+  background: #8dd3bb;
+  border-radius: 12px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  cursor: pointer;
+}
+.cc-container span {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  padding-left: 12px;
+}
+.pay-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+.pay-button-container button {
+  padding: 8px 16px;
+  background: #8dd3bb;
+  border-radius: 4px;
+  border: none;
+  width: 300px;
+}

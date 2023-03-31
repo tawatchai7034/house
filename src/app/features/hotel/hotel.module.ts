@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HotelsEffects } from './store/hotels.effects';
 import { StoreModule } from '@ngrx/store';
 import { hotelReducer } from './store/hotels.reducers';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,14 @@ import { hotelReducer } from './store/hotels.reducers';
     FormsModule,
     ReactiveFormsModule,
     EffectsModule.forFeature([HotelsEffects]),
-    StoreModule.forFeature('hotels', hotelReducer),
+    StoreModule.forFeature('hotels', hotelReducer, {
+      metaReducers: [
+        localStorageSync({
+          keys: ['hotels'],
+          rehydrate: true,
+        }),
+      ],
+    }),
   ],
   exports: [
     SearchBarComponent,
