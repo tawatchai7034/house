@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <!-- Template Start -->
     <footer>
-      <div class="footer-section company-info">
-        <h2>Enoca Booking</h2>
+      <div class="company-info">
+        <h2>Kagan Booking</h2>
         <div class="icon-container">
           <img src="assets/icons/facebook.svg" alt="facebook" />
           <img src="assets/icons/youtube.svg" alt="youtube" />

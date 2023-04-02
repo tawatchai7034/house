@@ -151,3 +151,27 @@ button {
 .error {
   border-color: red;
 }
+/* Extra Small (xs): Less than 576px */
+@media only screen and (max-width: 767.98px) {
+  .search-bar-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .section-content {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    flex-direction: column;
+    box-shadow: 0 30px 50px #8dd3bb;
+    border-radius: 16px;
+  }
+  .inputs-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    gap: 8px;
+  }
+}

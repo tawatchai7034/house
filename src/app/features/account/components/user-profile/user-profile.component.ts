@@ -52,7 +52,7 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
 })
 export class UserProfileComponent implements OnInit {
   loggedInUser$ = this.store.select(loggedInUserSelector);
-  activeTab: string = 'payment';
+  activeTab: string = 'account';
   firstName: string = '';
   lastName: string = '';
   userEmail: string = '';

@@ -19,17 +19,12 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   width: 380px;
-  align-self: stretch;
   cursor: pointer;
-  color: #112211;
 }
 .card-content {
   margin-bottom: 57px;
   display: flex;
-  align-items: flex-start;
-  align-self: stretch;
 }
 .card-number {
   margin-right: 16px;
@@ -54,17 +49,14 @@
 .exp-date {
   display: flex;
   align-items: center;
-  align-self: stretch;
 }
 .valid {
   margin-right: 16px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 .valid-thru {
   font-size: 12px;
-  font-weight: 500;
 }
 .valid-date {
   font-size: 20px;
@@ -82,7 +74,6 @@
   align-items: center;
   justify-content: center;
   width: 380px;
-  align-self: stretch;
   border: 2px dashed #8dd3bb;
   border-radius: 16px;
   cursor: pointer;
@@ -91,7 +82,10 @@
   background-color: #fff;
   border: none;
   font-size: 12px;
-  font-weight: 500;
-  color: #112211;
   opacity: 0.75;
+}
+@media only screen and (max-width: 1199.98px) {
+  .payments-card-container {
+    flex-direction: column;
+  }
 }

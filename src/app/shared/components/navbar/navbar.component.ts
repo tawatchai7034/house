@@ -63,7 +63,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.loggedInUser$.subscribe((loggedInUser) => {
       if (loggedInUser && loggedInUser.length > 0) {
-        console.log('User is logged in');
         this.firstName = loggedInUser[0].user.firstName;
       } else {
         console.log('User is not logged in');

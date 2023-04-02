@@ -52,13 +52,11 @@
   flex-direction: column;
   height: 300px;
   padding: 24px;
-
 }
 
 .card-title-price-container {
   display: flex;
   justify-content: space-between;
-
 }
 
 br {
@@ -67,7 +65,6 @@ br {
   background: #112211;
   opacity: 0.25;
   margin-top: 24px;
-
 }
 
 .card-title {
@@ -80,11 +77,11 @@ br {
 
 .card-price-amount {
   font-size: 24px;
-  color: #FF8682;
+  color: #ff8682;
 }
 
 .card-price-unit {
-  color: #FF8682;
+  color: #ff8682;
 }
 
 .card-address {
@@ -106,7 +103,7 @@ br {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #8DD3BB;
+  border: 1px solid #8dd3bb;
   border-radius: 4px;
 }
 
@@ -117,13 +114,11 @@ br {
 .card-buttons {
   display: flex;
   gap: 16px;
-
-
 }
 
 .card-button-icon {
   background: none;
-  border: 1px solid #8DD3BB;
+  border: 1px solid #8dd3bb;
   border-radius: 4px;
   width: 48px;
   height: 48px;
@@ -131,7 +126,6 @@ br {
   justify-content: center;
   align-items: center;
   padding: 8px 16px;
-
 }
 
 .card-button-view {
@@ -142,7 +136,54 @@ br {
   padding: 8px 16px;
   width: 428px;
   height: 48px;
-  background: #8DD3BB;
+  background: #8dd3bb;
   border-radius: 4px;
   border: none;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .filters-card-container {
+    width: 80%;
+  }
+  .card-container {
+    height: 700px;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+  .card-photo img {
+    border-radius: 12px 12px 0 0;
+    max-height: 300px;
+  }
+  .card-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+  .card-address p {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+  }
+  .card-title-price-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1399px) {
+  .filters-card-container {
+    width: 92%;
+  }
+  .card-button-view {
+    width: 328px;
+  }
+  .card-items-container {
+    width: 60%;
+  }
 }

@@ -9,14 +9,14 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
     <!-- Template Start -->
     <div class="edit-account-info">
       <p class="edit-account-info-title">Account</p>
-      <div class="edit-user-name">
+      <div class="edit-user">
         <div
           class="edit-user-name-container"
           *ngFor="let userInfo of userInfoContainers"
         >
-          <div class="name-label-and-value">
-            <p class="user-name">{{ userInfo.label }}</p>
-            <p class="user-name-value">{{ userInfo.value }}</p>
+          <div class="label-and-value">
+            <p class="user-label">{{ userInfo.label }}</p>
+            <p class="user-label-value">{{ userInfo.value }}</p>
           </div>
           <div class="edit-button-container">
             <img

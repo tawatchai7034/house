@@ -13,7 +13,10 @@ import {
   selector: 'app-hotel-listing',
   template: `
     <app-navbar class="active"></app-navbar>
-    <app-search-bar class="active"></app-search-bar>
+    <app-search-bar
+      class="active"
+      style="position: relative; top: +80px;"
+    ></app-search-bar>
     <div class="hotels-listing-container">
       <app-hotels-filters></app-hotels-filters>
       <app-filters-card [data]="data"></app-filters-card>

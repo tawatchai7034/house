@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
         [formGroup]="signUpForm"
         (ngSubmit)="onSubmit()"
       >
-        <h1 class="logo">Enoca</h1>
+        <h1 class="logo">Kagan Booking</h1>
 
         <h3 class="login-title">Sign up</h3>
         <p class="login-description">

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
     <div class="login-container">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="login-inputs-container">
-          <h1 class="logo">Enoca</h1>
+          <h1 class="logo">Kagan Booking</h1>
           <h3 class="login-title">Login</h3>
           <p class="login-description">Login to access your Enoca account</p>
           <section class="input-container">

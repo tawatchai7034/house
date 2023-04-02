@@ -105,3 +105,39 @@
 span {
   color: #ff8682;
 }
+@media only screen and (max-width: 1199.98px) {
+  .signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    gap: 100px;
+    margin: 0 auto;
+  }
+  .signup-image {
+    display: none;
+  }
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    width: 350px;
+    height: auto;
+    margin-top: 35px;
+    margin-bottom: 55px;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    width: 350px;
+    height: auto;
+  }
+  .form-container {
+    width: 80%;
+  }
+}

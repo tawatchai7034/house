@@ -143,3 +143,25 @@
 :host(.active) .logged-in-container {
   color: #000;
 }
+
+/* Extra Small (xs): Less than 576px */
+@media only screen and (max-width: 575.98px) {
+  .navbar-container {
+    width: 100%;
+  }
+
+  .button-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border: none;
+  }
+  .logged-in-container {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    gap: 5px;
+  }
+}

@@ -5,3 +5,14 @@
   display: flex;
   justify-content: space-between;
 }
+@media only screen and (max-width: 1199.98px) {
+  .hotels-listing-container {
+    margin: 0 auto;
+    margin-top: 170px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .hotels-listing-container {
+    margin-top: 100px;
+  }
+}
