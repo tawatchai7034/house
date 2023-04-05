@@ -105,6 +105,19 @@
 span {
   color: #ff8682;
 }
+.error-messages {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.back-button {
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: start;
+}
 @media only screen and (max-width: 1199.98px) {
   .signup-container {
     display: flex;

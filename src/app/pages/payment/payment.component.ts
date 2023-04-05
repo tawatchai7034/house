@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppStateInterface } from 'src/app/core/models/app-state.model';
 import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors';

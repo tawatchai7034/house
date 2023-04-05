@@ -3,7 +3,12 @@
     "name": "Grand Hotel",
     "nightlyPrice": 150,
     "cardBackground": "https://images.unsplash.com/photo-1630587148265-761cbd139043?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Z3JhbmQlMjBob3RlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
-    "address": "123 Main Street, Anytown USA",
+    "address": {
+      "streetAddress": "123 Main Street",
+      "city": "Anytown",
+      "state": "USA",
+      "country": "United States"
+    },
     "rating": 4.5,
     "accommodationType": "hotel",
     "photos": [
@@ -54,12 +59,17 @@
     ]
   },
   {
-    "name": "Beach Resort",
+    "name": "Hotel Belle Vue",
     "nightlyPrice": 200,
     "cardBackground": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    "address": "456 Ocean Avenue, Seaside USA",
+    "address": {
+      "streetAddress": "11 Rue du Port",
+      "city": "Marseille",
+      "state": "Provence-Alpes-Côte d'Azur",
+      "country": "France"
+    },
     "rating": 3.5,
-    "accommodationType": "resort",
+    "accommodationType": "hotel",
     "photos": [
       "https://picsum.photos/300/200?random=6",
       "https://picsum.photos/300/200?random=7",
@@ -67,7 +77,7 @@
       "https://picsum.photos/300/200?random=9",
       "https://picsum.photos/300/200?random=10"
     ],
-    "overview": "The Beach Resort is a tropical paradise with white sandy beaches and crystal clear waters.",
+    "overview": "Hotel Belle Vue is a hotel located in the south of France. It is situated at 11 Rue du Port, in the Vieux-Port district of Marseille. Its location is famous for Marseille's historic port area, its restaurants, and its boutique shops. The hotel offers modern and stylish rooms, a fully equipped fitness center, and a terrace bar with panoramic Vieux-Port views. Additionally, Hotel Belle Vue also offers private studio apartments, which are suitable for family or friends vacations.",
     "rooms": [
       {
         "name": "Ocean View Suite",
@@ -110,10 +120,15 @@
     ]
   },
   {
-    "name": "Mountain Lodge",
+    "name": "Motel Raffaello",
     "nightlyPrice": 120,
     "cardBackground": "https://images.unsplash.com/photo-1602061970430-4fbf0ddc4c16?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    "address": "789 Alpine Road, Mountainville USA",
+    "address": {
+      "streetAddress": "Via Urbana, 3",
+      "city": "Rome",
+      "state": "RM",
+      "country": "Italy"
+    },
     "rating": 4.2,
     "accommodationType": "motel",
     "photos": [
@@ -123,7 +138,7 @@
       "https://picsum.photos/300/200?random=14",
       "https://picsum.photos/300/200?random=15"
     ],
-    "overview": "The Mountain Lodge is a cozy retreat nestled in the heart of the mountains.",
+    "overview": "Motel Raffaello is a motel located in Rome, the capital of Italy. It is situated at Via Urbana, 3 and is within close proximity to major tourist attractions such as the Colosseum and the Roman Forum. The motel offers modern and comfortable rooms, a 24-hour front desk, and a rich breakfast buffet. Additionally, the motel's rooftop terrace provides guests with unforgettable views of Rome.",
     "rooms": [
       {
         "name": "Mountain View Suite",
@@ -164,12 +179,17 @@
     ]
   },
   {
-    "name": "City Center Hotel",
+    "name": "Mavi Panorama Resort",
     "nightlyPrice": 180,
     "cardBackground": "https://images.unsplash.com/photo-1645226626345-fc884e2d8fcf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80",
-    "address": "321 Broadway, Downtown USA",
+    "address": {
+      "streetAddress": "Cumhuriyet Mahallesi, Atatürk Caddesi No:45",
+      "city": "Antalya",
+      "state": "TUR",
+      "country": "Turkey"
+    },
     "rating": 2.8,
-    "accommodationType": "hotel",
+    "accommodationType": "resort",
     "photos": [
       "https://picsum.photos/300/200?random=16",
       "https://picsum.photos/300/200?random=17",
@@ -177,49 +197,56 @@
       "https://picsum.photos/300/200?random=19",
       "https://picsum.photos/300/200?random=20"
     ],
-    "overview": "The City Center Hotel is located in the heart of the city, close to all the best shopping and dining.",
+    "overview": "Mavi Panorama Resort is a luxurious resort located in the heart of Antalya, offering stunning views of the city and the Mediterranean Sea.",
     "rooms": [
       {
-        "name": "Executive Suite",
-        "description": "Spacious suite with separate living area and stunning city views.",
+        "name": "Deluxe Suite",
+        "description": "Experience the ultimate luxury in our spacious deluxe suite with panoramic sea views.",
+        "price": 500
+      },
+      {
+        "name": "Sea View Room",
+        "description": "Enjoy the stunning sea views from your comfortable room equipped with all the modern amenities.",
         "price": 300
       },
       {
-        "name": "City View Room",
-        "description": "Comfortable room with views of the city and all the essentials.",
-        "price": 180
-      },
-      {
-        "name": "Standard Room",
-        "description": "Comfortable room with all the essentials.",
-        "price": 150
-      },
-      {
-        "name": "Family Room",
-        "description": "Perfect for families with two queen-sized beds and plenty of space.",
+        "name": "Garden View Room",
+        "description": "Relax in our cozy garden view room surrounded by beautiful nature and equipped with all the modern amenities.",
         "price": 250
+      },
+      {
+        "name": "Family Suite",
+        "description": "Perfect for families, our family suite comes with two bedrooms, two bathrooms and a spacious living room with a private balcony.",
+        "price": 700
       }
     ],
     "location": {
-      "lat": 37.7749,
-      "lng": -122.4194
+      "lat": 36.8969,
+      "lng": 30.7133
     },
     "amenities": [
       "Free WiFi",
       "24-hour front desk",
       "Concierge service",
       "Fitness center",
-      "Indoor pool",
+      "Spa and wellness center",
+      "Outdoor pool",
+      "Private beach",
       "On-site restaurant",
       "Room service"
     ]
   },
   {
-    "name": "City Center Hotel",
+    "name": "Sakura Ryokan",
     "nightlyPrice": 180,
     "cardBackground": "https://images.unsplash.com/photo-1645226626345-fc884e2d8fcf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80",
-    "address": "321 Broadway, Downtown USA",
-    "rating": 1.9,
+    "address": {
+      "streetAddress": "2 Chome-6-23 Minamiogikubo",
+      "city": "Suginami City",
+      "state": "Tokyo",
+      "country": "Japan"
+    },
+    "rating": 4.9,
     "accommodationType": "hotel",
     "photos": [
       "https://picsum.photos/300/200?random=16",
@@ -228,7 +255,7 @@
       "https://picsum.photos/300/200?random=19",
       "https://picsum.photos/300/200?random=20"
     ],
-    "overview": "The City Center Hotel is located in the heart of the city, close to all the best shopping and dining.",
+    "overview": "Sakura Ryokan is a traditional Japanese-style ryokan located in Suginami, a district of Tokyo, Japan. The hotel is situated at 2 Chome-6-23 Minamiogikubo and is within walking distance of Inokashira Park, one of the most popular destinations in the area. The hotel features a restaurant serving Japanese cuisine and sweets, a classic Japanese bath, and a spacious garden.",
     "rooms": [
       {
         "name": "Executive Suite",

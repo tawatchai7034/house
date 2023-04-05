@@ -22,7 +22,8 @@ import slugify from 'slugify';
             <img src="assets/icons/location.svg" alt="location-icon" />
           </div>
           <p>
-            {{ hotel.address }}
+            {{ hotel.address.streetAddress }}, {{ hotel.address.city }},
+            {{ hotel.address.country }}
           </p>
         </div>
         <div class="hotel-title-and-rating">
@@ -139,11 +140,13 @@ export class HotelDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Get the slug from the URL route
     this.route.paramMap.subscribe((params) => {
       const slug = params.get('name');
+      // Retrieve the hotel information from the store
       this.store.select('hotels').subscribe((state) => {
         this.hotel = state.hotels.find((h) => slugify(h.name) === slug);
-
+        // Get the first 4 amenities
         if (this.hotel && this.hotel.amenities) {
           this.categories = this.hotel.amenities.slice(0, 4);
         }

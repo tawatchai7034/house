@@ -43,7 +43,9 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
           <div class="logged-in-container">
             <img src="assets/icons/heart.svg" alt="heart" />
             <span class="user-favourites">Favourites |</span>
-            <span class="user-avatar">{{ firstName | logo }}</span>
+            <span class="user-avatar" routerLink="/account">{{
+              firstName | logo
+            }}</span>
             <span class="user-name">{{ firstName }}</span>
           </div>
         </ng-template>

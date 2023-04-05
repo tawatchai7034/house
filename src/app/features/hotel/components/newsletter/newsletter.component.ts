@@ -13,19 +13,15 @@ import { Component } from '@angular/core';
         <p>
           <span> The Travel </span>
           <br />
-
           Get inspire! Recieve travel discounts, tips and behind the scenes
           stories.
         </p>
-
         <section class="newsletter-submit-container">
           <input type="text" name="" id="" placeholder="Your e-mail adresss" />
           <button>Subscribe</button>
         </section>
       </div>
-      <div class="newsletter-svg-container">
-        <!-- <img [src]="" alt="svg" /> -->
-      </div>
+      <div class="newsletter-svg-container"></div>
     </div>
     <!-- Template End -->
   `,

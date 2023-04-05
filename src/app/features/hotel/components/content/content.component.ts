@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HotelDataModel } from '../../store/hotel.model';
 import { select, Store } from '@ngrx/store';
@@ -8,6 +8,8 @@ import {
   hotelsSelector,
   isLoadingSelector,
 } from '../../store/hotels.selectors';
+import { Router } from '@angular/router';
+import slugify from 'slugify';
 
 @Component({
   selector: 'app-content',
@@ -24,7 +26,10 @@ import {
       <div class="content-card-container">
         <ng-container *ngIf="hotels$ | async as hotels">
           <ng-container *ngFor="let hotel of hotels | slice : 0 : 4">
-            <app-card [hotel]="hotel"></app-card>
+            <app-card
+              [hotel]="hotel"
+              (bookNowClick)="onHotelBookNowClick($event)"
+            ></app-card>
           </ng-container>
         </ng-container>
       </div>
@@ -38,9 +43,14 @@ export class ContentComponent {
   error$: Observable<string | null>;
   hotels$: Observable<HotelDataModel[]>;
 
-  constructor(private store: Store<AppStateInterface>) {
+  constructor(private store: Store<AppStateInterface>, private router: Router) {
     this.error$ = this.store.pipe(select(errorSelector));
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.hotels$ = this.store.pipe(select(hotelsSelector));
+  }
+
+  onHotelBookNowClick(hotelName: string) {
+    const slug = slugify(hotelName);
+    this.router.navigate(['hotel-listing', slug]);
   }
 }

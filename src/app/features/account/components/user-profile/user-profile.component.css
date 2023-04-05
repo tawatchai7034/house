@@ -79,6 +79,19 @@
   justify-content: center;
   align-items: center;
 }
+.logout-button-container {
+  display: flex;
+  justify-content: center;
+}
+.logout-button-container button {
+  background-color: red;
+  border-radius: 4px;
+  padding: 8px 16px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 35px;
+}
 @media only screen and (max-width: 1199.98px) {
   .account-sections {
     width: auto;

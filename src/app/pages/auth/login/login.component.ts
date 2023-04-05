@@ -12,9 +12,12 @@ import { Router } from '@angular/router';
     <div class="login-container">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="login-inputs-container">
+          <button class="back-button" (click)="backToHome()">&#8592;</button>
           <h1 class="logo">Kagan Booking</h1>
           <h3 class="login-title">Login</h3>
-          <p class="login-description">Login to access your Enoca account</p>
+          <p class="login-description">
+            Login to access your Kagan Booking account
+          </p>
           <section class="input-container">
             <input type="email" placeholder="e-mail" formControlName="email" />
             <input
@@ -22,6 +25,9 @@ import { Router } from '@angular/router';
               placeholder="password"
               formControlName="password"
             />
+            <span class="error-message">{{
+              loginForm.get('errorMessage')?.value
+            }}</span>
           </section>
           <section class="password-section">
             <label>
@@ -62,6 +68,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    //After login, if the user is logged in, navigate to the home page
     this.store
       .select(AuthSelectors.loggedInUserSelector)
       .subscribe((loggedInUser) => {
@@ -75,6 +82,26 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
+    //Check user credentials
+    this.store
+      .select(AuthSelectors.loggedInUserSelector)
+      .subscribe((loggedInUser) => {
+        //If the user is not logged in, set the error message
+        if (!loggedInUser) {
+          this.loginForm
+            .get('errorMessage')
+            ?.setValue('Invalid Email or Password');
+        } else {
+          //If the user is logged in, set the error message to an empty string
+          this.loginForm.get('errorMessage')?.setValue('');
+        }
+      });
+
+    //Dispatch login action
     this.store.dispatch(AuthActions.login({ email, password }));
+  }
+
+  backToHome() {
+    this.router.navigate(['/']);
   }
 }

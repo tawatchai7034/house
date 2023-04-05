@@ -28,6 +28,9 @@ app.get("/", (req, res) => {
 
 app.get("/user/:id", async (req, res) => {
   const userId = req.params.id;
+  if (!ObjectId.isValid(userId)) {
+    return res.status(400).json({ error: "Invalid user ID" });
+  }
   const user = await db
     .collection("users")
     .findOne({ _id: new ObjectId(userId) });

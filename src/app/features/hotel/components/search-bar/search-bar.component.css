@@ -20,8 +20,7 @@
 .section-title {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .inputs-container {
@@ -148,8 +147,8 @@ button {
   display: none;
 }
 
-.error {
-  border-color: red;
+.invalid-form {
+  border: 3px solid red;
 }
 /* Extra Small (xs): Less than 576px */
 @media only screen and (max-width: 767.98px) {

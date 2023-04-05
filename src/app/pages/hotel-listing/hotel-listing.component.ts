@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { HotelDataModel } from '../../features/hotel/store/hotel.model';
 import { select, Store } from '@ngrx/store';
@@ -13,12 +13,8 @@ import {
   selector: 'app-hotel-listing',
   template: `
     <app-navbar class="active"></app-navbar>
-    <app-search-bar
-      class="active"
-      style="position: relative; top: +80px;"
-    ></app-search-bar>
     <div class="hotels-listing-container">
-      <app-hotels-filters></app-hotels-filters>
+      <!-- <app-hotels-filters></app-hotels-filters> -->
       <app-filters-card [data]="data"></app-filters-card>
     </div>
     <app-newsletter style="position: relative; top: +240px;"></app-newsletter>

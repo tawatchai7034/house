@@ -1,7 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppStateInterface } from 'src/app/core/models/app-state.model';
-import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors';
 
 @Component({
   selector: 'app-account-info',

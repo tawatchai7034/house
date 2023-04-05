@@ -1,5 +1,10 @@
 export interface HotelDataModel {
-  address: string;
+  address: {
+    streetAddress: string;
+    city: string;
+    state: string;
+    country: string;
+  };
   cardBackground: string;
   amenities: string[];
   location: { lat: number; lng: number };

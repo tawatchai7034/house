@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   selector: 'app-sign-up',
   template: `
     <div class="signup-container">
+      <button class="back-button" (click)="backToHome()">&#8592;</button>
       <div class="signup-image"></div>
       <form
         class="form-container"
@@ -39,9 +40,10 @@ import { Router } from '@angular/router';
           <div class="form-row">
             <input type="email" placeholder="Email" formControlName="email" />
             <input
-              type="number"
+              type="tel"
               placeholder="Phone Number"
               formControlName="phoneNumber"
+              (keyup)="formatPhoneNumber()"
             />
           </div>
           <div class="form-col">
@@ -57,7 +59,65 @@ import { Router } from '@angular/router';
             />
           </div>
         </section>
+        <div class="error-messages">
+          <span>{{
+              signUpForm.get('firstName')?.errors?.['required']
+                ? '* First name is required'
+                : signUpForm.get('firstName')?.errors?.['minlength']
+                ? '* First name must be at least 3 characters'
+                : signUpForm.get('firstName')?.errors?.['maxlength']
+                ? '* First name must be at most 10 characters'
+                : signUpForm.get('firstName')?.errors?.['pattern']
+                ? '* First name must contain only letters'
+                : ''
+          }}</span>
+          <span>{{
+              signUpForm.get('lastName')?.errors?.['required']
+                ? '* Last name is required' 
+                : signUpForm.get('lastName')?.errors?.['minlength']
+                ? '* Last name must be at least 3 characters'
+                : signUpForm.get('lastName')?.errors?.['maxlength']
+                ? '* Last name must be at most 10 characters'
+                : signUpForm.get('lastName')?.errors?.['pattern']
+                ? '* Last name must contain only letters'
+                : ''
+          }}</span>
+          <span>{{
+              signUpForm.get('email')?.errors?.['required']
+                ? '* Email is required'
+                : signUpForm.get('email')?.errors?.['email']
+                ? '* Email is invalid'
+                : ''
+          }}</span>
+          <span>{{
+              signUpForm.get('phoneNumber')?.errors?.['required']
+                ? '* Phone number is required'
+                : signUpForm.get('phoneNumber')?.errors?.['pattern']
+                ? '* Phone number must be 11 digits'
+                : ' '
+          }}</span>
 
+          <span>{{
+              signUpForm.get('password')?.errors?.['required']
+                ? '* Password is required'
+                : signUpForm.get('password')?.errors?.['minlength']
+                ? '* Password must be at least 6 characters'
+                : ''
+          }}</span>
+          <span>{{
+              signUpForm.get('confirmPassword')?.errors?.['required']
+                ? '* Confirm password is required'
+                : signUpForm.get('confirmPassword')?.value !==
+                  signUpForm.get('password')?.value
+                ? '* Passwords do not match'
+                : ''
+          }}</span>
+          <span>{{
+              signUpForm.errors?.['passwordMismatch']
+                ? '* Passwords do not match'
+                : ''
+          }}</span>
+        </div>
         <section class="terms">
           <input type="checkbox" />
           <label
@@ -100,20 +160,22 @@ export class SignUpComponent implements OnInit {
             Validators.required,
             Validators.minLength(3),
             Validators.maxLength(10),
-            Validators.pattern('^[a-zA-Z]*$'),
+            Validators.pattern('^[a-zA-ZığüşöçİĞÜŞÖÇ]*$'),
           ],
         ],
+
         phoneNumber: [
           '',
           [
             Validators.required,
-            Validators.pattern('^[0-9]*$'),
+            Validators.pattern('^\\d{11}$'),
             Validators.minLength(11),
             Validators.maxLength(11),
           ],
         ],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', Validators.required],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+
         confirmPassword: ['', Validators.required],
       },
       { validators: this.passwordMatchValidator }
@@ -150,5 +212,17 @@ export class SignUpComponent implements OnInit {
     this.store.dispatch(
       AuthActions.signUp({ firstName, lastName, email, phoneNumber, password })
     );
+  }
+  formatPhoneNumber() {
+    let phoneNumber = this.signUpForm.get('phoneNumber')?.value;
+    phoneNumber = String(phoneNumber);
+    phoneNumber = phoneNumber.replace(/\D/g, '');
+    if (phoneNumber.length > 0 && phoneNumber[0] !== '0') {
+      phoneNumber = '0' + phoneNumber;
+    }
+    this.signUpForm.get('phoneNumber')?.setValue(phoneNumber);
+  }
+  backToHome() {
+    this.router.navigate(['/']);
   }
 }

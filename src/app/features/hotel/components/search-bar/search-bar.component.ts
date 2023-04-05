@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -8,17 +8,22 @@ import {
 } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { select, Store } from '@ngrx/store';
-import { filter, Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { AppStateInterface } from 'src/app/core/models/app-state.model';
 import { HotelDataModel } from '../../store/hotel.model';
 import { hotelsSelector } from '../../store/hotels.selectors';
+import { Router } from '@angular/router';
+import slugify from 'slugify';
 
 @Component({
   selector: 'app-search-bar',
   template: `
     <!-- Template Start -->
     <div class="search-bar-container">
-      <div class="section-content">
+      <div
+        class="section-content"
+        [ngClass]="{ 'invalid-form': formSubmitted && form.invalid }"
+      >
         <section class="section-title">
           <p>Where are you flying?</p>
         </section>
@@ -30,20 +35,17 @@ import { hotelsSelector } from '../../store/hotels.selectors';
               formControlName="destination"
               (keyup)="searchHotels($event)"
               (focus)="destinationInputFocused = true"
-              (blur)="destinationInputFocused = false"
+              value=""
             />
-            <ul
-              class="search-results"
-              *ngIf="destinationInputFocused && hotelNames.length > 0"
-            >
+            <ul class="search-results" *ngIf="destinationInputFocused">
               <li
                 class="search-result-item"
-                *ngFor="let hotel of hotels$ | async"
+                *ngFor="let hotel of filteredHotels"
+                (click)="selectDestination(hotel.address.country)"
               >
-                {{ hotel.name }}
+                {{ hotel.address.country }}
               </li>
             </ul>
-
             <input
               type="date"
               placeholder="Check In"
@@ -62,7 +64,7 @@ import { hotelsSelector } from '../../store/hotels.selectors';
               id="rooms-guests-input"
               placeholder="Rooms & Guests"
               formControlName="roomsGuests"
-              (click)="openModal(content)"
+              (click)="openModal(content); updateRoomsGuests()"
             />
             <ng-template #content let-modal>
               <div class="modal-header">
@@ -114,11 +116,14 @@ import { hotelsSelector } from '../../store/hotels.selectors';
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent {
+  // Define a property 'today' as the current date in ISO format
   today = new Date().toISOString().split('T')[0];
   form: FormGroup;
   hotels$: Observable<HotelDataModel[]>;
-  hotelNames: string[] = [];
+  hotelCountry: string[] = [];
   destinationInputFocused = false;
+  filteredHotels: HotelDataModel[] = [];
+  formSubmitted = false;
 
   guestsData: GuestsData = {
     rooms: 1,
@@ -129,37 +134,52 @@ export class SearchBarComponent {
   constructor(
     private fb: FormBuilder,
     private modalService: NgbModal,
-    private store: Store<AppStateInterface>
+    private store: Store<AppStateInterface>,
+    private router: Router
   ) {
+    // Initialize the form property using the FormBuilder dependency
     this.form = this.fb.group({
       destination: '',
       checkIn: ['', Validators.required],
       checkOut: ['', [Validators.required]],
-      roomsGuests: '',
+      roomsGuests: [
+        '',
+        [Validators.required, this.roomsGuestsValidator.bind(this)],
+      ],
     });
+    // Get the checkOut control from the form
     const checkOutControl = this.form.get('checkOut');
     if (checkOutControl) {
+      // Set the validator for the checkOut control using the checkOutValidator method
       checkOutControl.setValidators(this.checkOutValidator.bind(this));
     }
     this.hotels$ = this.store.pipe(select(hotelsSelector));
     this.hotels$.pipe(filter((hotels) => !!hotels)).subscribe((hotels) => {
-      this.hotelNames = hotels.map((hotel) => hotel.name);
+      this.hotelCountry = hotels.map((hotel) => hotel.address.country);
+      this.filteredHotels = hotels;
     });
-  }
-  searchHotels(event: any) {
-    const value = event.target.value;
-    const results = this.hotelNames.filter((name) =>
-      name.toLowerCase().includes(value.toLowerCase())
-    );
-    console.log(results);
   }
 
   get checkOutControl() {
     return this.form.get('checkOut');
   }
 
+  // Define a method 'openModal' that takes content as an argument
   openModal(content: any) {
     this.modalService.open(content);
+  }
+
+  roomsGuestsValidator(control: AbstractControl): ValidationErrors | null {
+    const value = control.value;
+    if (value) {
+      const [rooms, adults, children] = value
+        .split(',')
+        .map((val: any) => parseInt(val));
+      if (rooms > 0 && adults > 0 && children >= 0) {
+        return null;
+      }
+    }
+    return { invalidRoomsGuests: true };
   }
 
   checkOutValidator(control: AbstractControl): ValidationErrors | null {
@@ -187,15 +207,38 @@ export class SearchBarComponent {
     }
     this.updateRoomsGuests();
   }
-
   updateRoomsGuests() {
     this.form.patchValue({
       roomsGuests: `${this.guestsData['rooms']} Rooms, ${this.guestsData['adults']} Adults, ${this.guestsData['children']} Children`,
     });
   }
-
   submit() {
-    console.log(this.form.value);
+    if (this.form.valid) {
+      const country = this.form.value.destination;
+      const countrySlug = slugify(country, { lower: true });
+      this.router.navigate(['/hotel-listing'], {
+        queryParams: { country: countrySlug },
+      });
+    } else {
+      console.log('Error: All form fields are required.');
+    }
+  }
+
+  selectDestination(country: string) {
+    this.form.patchValue({ destination: country });
+    this.destinationInputFocused = false;
+  }
+  searchHotels(event: any) {
+    const value = event.target.value;
+    this.hotels$
+      .pipe(
+        map((hotels) =>
+          hotels.filter((hotel) =>
+            hotel.address.country.toLowerCase().includes(value.toLowerCase())
+          )
+        )
+      )
+      .subscribe((filteredHotels) => (this.filteredHotels = filteredHotels));
   }
 }
 

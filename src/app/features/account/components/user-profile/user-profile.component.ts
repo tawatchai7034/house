@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppStateInterface } from 'src/app/core/models/app-state.model';
 import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors';
+
 @Component({
   selector: 'app-user-profile',
   template: `
@@ -45,6 +47,9 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
 
       <app-bookings-info *ngIf="activeTab === 'booking'"></app-bookings-info>
       <app-payment-info *ngIf="activeTab === 'payment'"></app-payment-info>
+      <div class="logout-button-container">
+        <button (click)="logout()">LOG OUT</button>
+      </div>
     </div>
     <!-- Template End -->
   `,
@@ -57,7 +62,10 @@ export class UserProfileComponent implements OnInit {
   lastName: string = '';
   userEmail: string = '';
 
-  constructor(private store: Store<AppStateInterface>) {}
+  constructor(
+    private store: Store<AppStateInterface>,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loggedInUser$.subscribe((loggedInUser) => {
@@ -68,6 +76,12 @@ export class UserProfileComponent implements OnInit {
       } else {
         console.log(Error);
       }
+    });
+  }
+  logout(): void {
+    localStorage.removeItem('loggedInUser');
+    this.router.navigate(['/']).then(() => {
+      location.reload();
     });
   }
 }
