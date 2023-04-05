@@ -23,7 +23,11 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
           <div class="hotel-name">{{ hotel.name }}</div>
           <div class="hotel-address">
             <img src="/assets/icons/location.svg" alt="" />
-            <span> {{ hotel.address }}</span>
+            <span>
+              {{ hotel.address.streetAddress }},{{ hotel.address.city }},{{
+                hotel.address.country
+              }}</span
+            >
           </div>
         </div>
 
