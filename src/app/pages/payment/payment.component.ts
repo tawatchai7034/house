@@ -1,8 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { loadStripe } from '@stripe/stripe-js';
 import { AppStateInterface } from 'src/app/core/models/app-state.model';
 import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors';
-
+import { environment } from 'src/environments/environments';
 @Component({
   selector: 'app-payment',
   template: `
@@ -12,10 +15,13 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
       <div class="payment-info-container">
         <!-- Room information section -->
         <div class="room-info">
-          <span class="room-name">{{ room?.name }}</span>
-          <p class="room-price">
-            <span>{{ room?.price | currency }}</span> /night
-          </p>
+          <div class="room-details">
+            <h2 class="room-name">{{ room?.name }}</h2>
+            <p class="room-description">{{ room?.description }}</p>
+          </div>
+          <div class="room-price">
+            <p class="price-per-night">{{ room?.price | currency }}/night</p>
+          </div>
         </div>
 
         <!-- Hotel information section -->
@@ -33,23 +39,38 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
 
         <!-- Check-in and check-out section -->
         <div class="check-in-out">
-          <section class="check-in">
-            <p class="check-in-label">Giriş tarihi</p>
-            <span class="check-in-date">Check-In</span>
-          </section>
-          <section class="hotel-photo">
+          <div class="check-in">
+            <p class="check-in-label">Check-in</p>
+            <span class="check-in-date">10 April</span>
+          </div>
+          <div class="hotel-photo">
             <img class="photo" src="/assets/icons/hotel.svg" alt="" />
-          </section>
-          <section class="check-out">
-            <p class="check-out-label">Çıkış tarihi</p>
-            <span class="check-out-date">Check-Out</span>
-          </section>
+          </div>
+          <div class="check-out">
+            <p class="check-out-label">Check-out</p>
+            <span class="check-out-date">15 April</span>
+          </div>
         </div>
+
         <ng-container
           *ngIf="loggedInUser$ | async as loggedInUser; else notLoggedIn"
         >
-          <div class="cc-container">
-            <span>**** 4321 02/27</span>
+          <div class="credit-card">
+            <div class="credit-card__logo">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/800px-Visa_Inc._logo.svg.png?20170118154621"
+                alt=""
+              />
+            </div>
+            <div class="credit-card__number">
+              <span> **** **** **** ****</span>
+            </div>
+            <div class="credit-card__info">
+              <div class="credit-card__name">
+                {{ firstName }} {{ lastName }}
+              </div>
+              <div class="credit-card__expiry">04/24</div>
+            </div>
           </div>
         </ng-container>
 
@@ -80,28 +101,40 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
               </section>
             </div>
           </div>
-          <p class="price-details-text">Price Details</p>
+
           <div class="price-details">
-            <div class="price-labels">
-              <span>Base Fare</span>
-              <span>Discount</span>
-              <span>Taxes</span>
-              <span>Service Fee</span>
-              <span>Total</span>
-            </div>
-            <div class="price-values">
-              <span>$240</span>
-              <span>$0</span>
-              <span>$20</span>
-              <span>$5</span>
-              <span>$265</span>
-            </div>
+            <h4>Price Details</h4>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Base Fare</td>
+                  <td>{{ room.price | currency }}</td>
+                </tr>
+                <tr>
+                  <td>Discount</td>
+                  <td>{{ discount | currency }}</td>
+                </tr>
+                <tr>
+                  <td>Taxes</td>
+                  <td>{{ tax | currency }}</td>
+                </tr>
+                <tr>
+                  <td>Service Fee</td>
+                  <td>{{ serviceFee | currency }}</td>
+                </tr>
+                <tr class="total">
+                  <td>Total</td>
+                  <td>{{ totalPrice | currency }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
           <ng-container
             *ngIf="loggedInUser$ | async as loggedInUser; else notLoggedInPay"
           >
             <div class="pay-button-container">
-              <button>Pay now</button>
+              <button #payButton (click)="onCheckout()">Pay Now</button>
             </div>
           </ng-container>
 
@@ -118,10 +151,21 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
 export class PaymentComponent implements OnInit {
   room: any;
   hotel: any;
-
+  firstName: string = '';
+  lastName: string = '';
+  discount: number = 0;
+  tax: number = 0.18;
+  serviceFee: number = 5;
+  totalPrice: number = 0;
+  paymentHandler: any = null;
   loggedInUser$ = this.store.select(loggedInUserSelector);
 
-  constructor(private store: Store<AppStateInterface>) {}
+  constructor(
+    private store: Store<AppStateInterface>,
+    private router: Router,
+    private http: HttpClient
+  ) {}
+  stripeKey = environment.stripeKey;
 
   ngOnInit() {
     const storedHotelName = localStorage.getItem('hotelName');
@@ -136,5 +180,36 @@ export class PaymentComponent implements OnInit {
         this.hotel = state.hotels.find((h) => h.name === storedHotelName);
       });
     }
+    this.loggedInUser$.subscribe((loggedInUser) => {
+      if (loggedInUser) {
+        this.firstName = loggedInUser[0].user.firstName;
+        this.lastName = loggedInUser[0].user.lastName;
+      } else {
+        console.log(Error);
+      }
+    });
+    this.calculateTotalPrice();
+    // this.invokeStripe();
+  }
+  calculateTotalPrice() {
+    const taxAmount = this.room.price * this.tax;
+    this.totalPrice = this.room.price + taxAmount + this.serviceFee;
+  }
+
+  onCheckout() {
+    this.http
+      .post('http://localhost:8000/checkout', {
+        name: `${this.firstName} ${this.lastName}'s Payment`,
+        amount: this.totalPrice,
+        roomName: this.room.name,
+        roomPhoto: this.hotel.photos[0],
+        hotelName: this.hotel.name,
+      })
+      .subscribe(async (res: any) => {
+        let stripe = await loadStripe(this.stripeKey);
+        stripe?.redirectToCheckout({
+          sessionId: res.id,
+        });
+      });
   }
 }

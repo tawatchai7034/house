@@ -19,6 +19,7 @@ import { AccountModule } from './features/account/account.module';
 import { AccountComponent } from './pages/account/account.component';
 import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { SuccessPageComponent } from './pages/payment/success-page/success-page.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { PaymentComponent } from './pages/payment/payment.component';
     AccountComponent,
     HotelDetailsComponent,
     PaymentComponent,
+    SuccessPageComponent,
   ],
   imports: [
     AccountModule,

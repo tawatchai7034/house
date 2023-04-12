@@ -7,6 +7,7 @@ import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
 import { AccountComponent } from './pages/account/account.component';
 import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { SuccessPageComponent } from './pages/payment/success-page/success-page.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'payment',
     component: PaymentComponent,
+  },
+  {
+    path: 'success',
+    component: SuccessPageComponent,
   },
 ];
 

@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const { config } = require("./config/config");
 const userRouter = require("./routes/User");
 const app = express();
+const cors = require("cors");
+const bodyparser = require("body-parser");
 const { ObjectId } = require("mongodb");
 
 // Connect to MongoDB
@@ -14,6 +16,48 @@ mongoose
 const db = mongoose.connection;
 
 app.use(express.json());
+app.use(express.static("public"));
+
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
+
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+app.post("/checkout", async (req, res, next) => {
+  try {
+    if (isNaN(req.body.amount)) {
+      throw new Error("Invalid amount value");
+    }
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      line_items: [
+        {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: `${req.body.hotelName} - ${req.body.roomName}`,
+              description: "Room booking",
+              images: [req.body.roomPhoto],
+            },
+            unit_amount: req.body.amount * 100,
+          },
+          quantity: 1,
+        },
+      ],
+      mode: "payment",
+      success_url: "http://localhost:4200/success",
+      cancel_url: "http://localhost:4200/cancel",
+    });
+    res.status(200).json({ id: session.id });
+  } catch (error) {
+    next(error);
+  }
+});
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -39,6 +83,7 @@ app.get("/user/:id", async (req, res) => {
   }
   res.json(user);
 });
+
 // Start server
 const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`Server started on port ${port}`));

@@ -4,7 +4,6 @@
   margin-left: 80px;
   margin-right: 80px;
 }
-
 .payment-info-container {
   width: 60%;
   margin-bottom: 70px;
@@ -15,32 +14,89 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.room-details {
+  flex-grow: 1;
+}
+
+.room-name {
+  margin-bottom: 5px;
+}
+
+.room-description {
+  color: #555;
+  font-size: 14px;
+}
+
 .room-price {
-  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.price-per-night {
+  font-size: 28px;
   color: #ff8682;
+  margin-bottom: 10px;
 }
-.room-price span {
-  font-size: 32px;
-}
+
 .hotel-info {
-  border: 0.5px solid #8dd3bb;
-  padding: 32px 0;
+  border: 1px solid #8dd3bb;
+  padding: 40px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   margin-top: 24px;
   margin-bottom: 40px;
-  gap: 8px;
+  gap: 12px;
 }
+
+.hotel-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.hotel-address {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #555;
+}
+
+.hotel-address img {
+  margin-right: 8px;
+}
+
 .check-in-out {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  padding: 16px;
 }
-.check-in-out img {
-  width: 48px;
-  height: 48px;
+
+.check-in,
+.check-out {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.check-in-date,
+.check-out-date {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+.photo {
+  width: 64px;
+  height: 64px;
+}
+
 .login-signup-container {
   display: flex;
   flex-direction: column;
@@ -97,37 +153,35 @@
   border-radius: 4px;
 }
 .price-details {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 32px;
+  padding: 0 16px;
+  margin-top: 32px;
 }
-.price-info {
-  display: flex;
-}
-.price-labels,
-.price-values {
-  display: flex;
-  flex-direction: column;
-}
-.price-details-text {
-  font-weight: 700;
-  padding: 0 32px;
-}
-.cc-container {
-  background: #8dd3bb;
-  border-radius: 12px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  margin-top: 24px;
-  cursor: pointer;
-}
-.cc-container span {
-  display: flex;
+
+table {
+  border-collapse: collapse;
   width: 100%;
-  gap: 12px;
-  padding-left: 12px;
 }
+
+td {
+  padding: 16px 0;
+}
+
+td:first-child {
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+
+td:last-child {
+  text-align: right;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+
+tr.total td:last-child {
+  color: #ff8682;
+}
+
 .pay-button-container {
   display: flex;
   justify-content: center;
@@ -139,4 +193,56 @@
   border-radius: 4px;
   border: none;
   width: 300px;
+}
+.credit-card {
+  width: 400px;
+  height: 250px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-color: #8dd3bb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+.credit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background-color: #77c5ab;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
+.credit-card__logo {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.credit-card__number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.credit-card__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.credit-card__name,
+.credit-card__expiry {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.credit-card__expiry {
+  text-align: right;
+}
+.credit-card__logo img {
+  width: 60px;
+  height: 40px;
+  object-fit: contain;
 }
