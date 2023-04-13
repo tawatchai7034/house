@@ -11,7 +11,6 @@ export class HotelsEffects {
     this.actions$.pipe(
       ofType(HotelsActions.loadHotels),
       switchMap(() => {
-        console.log('Getting hotels...');
         return this.dataService.getHotels().pipe(
           map((hotels: HotelDataModel[]) =>
             HotelsActions.loadHotelsSuccess({ hotels })

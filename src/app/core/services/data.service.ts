@@ -12,7 +12,6 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   getHotels(): Observable<HotelDataModel[]> {
-    console.log('Fetching hotels from API...');
     return this.http.get<HotelDataModel[]>(this.hotelsURL);
   }
 }
