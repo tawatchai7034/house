@@ -1,8 +1,6 @@
 body {
   /* Body CSS */
   font-family: "Roboto", sans-serif !important;
-  margin-left: 110px !important;
-  margin-right: 110px !important;
 }
 
 @media only screen and (max-width: 1199.98px) {

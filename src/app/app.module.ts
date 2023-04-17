@@ -20,6 +20,7 @@ import { AccountComponent } from './pages/account/account.component';
 import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { SuccessPageComponent } from './pages/payment/success-page/success-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { SuccessPageComponent } from './pages/payment/success-page/success-page.
     }),
     NgbModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -12,6 +12,7 @@ import { HotelsEffects } from './store/hotels.effects';
 import { StoreModule } from '@ngrx/store';
 import { hotelReducer } from './store/hotels.reducers';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
     HotelsFiltersComponent,
     NewsletterComponent,
     SearchBarComponent,
+    TestimonialsComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
     NewsletterComponent,
     FiltersCardComponent,
     HotelsFiltersComponent,
+    TestimonialsComponent,
   ],
 })
 export class HotelModule {}

@@ -20,13 +20,23 @@ app.use(express.static("public"));
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
+const allowedOrigins = [
+  "http://localhost:4200",
+  "https://angular-booking.vercel.app/",
+];
 
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 app.post("/checkout", async (req, res, next) => {
   try {

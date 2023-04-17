@@ -32,6 +32,16 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
         <li class="company-name">
           <h3 routerLink="/">Kagan Booking</h3>
         </li>
+        <div
+          class="hamburger"
+          (click)="toggleMenu()"
+          [ngClass]="{ active: menuActive }"
+        >
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+
         <li
           class="button-section"
           *ngIf="!(loggedInUser$ | async); else loggedInTrue"
@@ -40,13 +50,18 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
           <button class="sign-up-button" routerLink="/sign-up">Sign Up</button>
         </li>
         <ng-template #loggedInTrue>
-          <div class="logged-in-container">
-            <img src="assets/icons/heart.svg" alt="heart" />
-            <span class="user-favourites">Favourites |</span>
+          <div class="logged-in-container" [ngClass]="{ active: menuActive }">
+            <img src="assets/icons/heart.svg" alt="heart" class="heart-img" />
+            <span class="user-favourites">Favourites </span>
             <span class="user-avatar" routerLink="/account">{{
               firstName | logo
             }}</span>
-            <span class="user-name">{{ firstName }}</span>
+            <span class="user-name" routerLink="/account">
+              <ng-container *ngIf="menuActive; else showFirstName"
+                >Settings</ng-container
+              >
+              <ng-template #showFirstName>{{ firstName }}</ng-template>
+            </span>
           </div>
         </ng-template>
       </ul>
@@ -59,7 +74,7 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
 export class NavbarComponent implements OnInit {
   loggedInUser$ = this.store.select(loggedInUserSelector);
   firstName: string = '';
-
+  menuActive = false;
   constructor(private store: Store<AppStateInterface>) {}
 
   ngOnInit(): void {
@@ -70,5 +85,8 @@ export class NavbarComponent implements OnInit {
         console.log('User is not logged in');
       }
     });
+  }
+  toggleMenu() {
+    this.menuActive = !this.menuActive;
   }
 }
