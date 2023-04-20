@@ -2,45 +2,31 @@
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
-  margin-left: 80px;
-  margin-right: 80px;
+  margin: 0 80px;
 }
-
 .hotel-info-container {
   display: flex;
   flex-direction: column;
 }
-.hotel-title {
+.address-container {
   display: flex;
-  align-items: center;
+  gap: 8px;
 }
 .hotel-title-and-rating {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
-
-.hotel-title-text {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.address-container {
-  margin-bottom: 16px;
-  display: flex;
-}
-
-.location {
-  margin-right: 8px;
-}
-
 .rating {
   border-radius: 4px;
   padding: 7px 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid #8dd3bb;
-  margin-right: 12px;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .price-container {
   color: #ff8682;
@@ -49,40 +35,23 @@
   font-size: 32px;
   font-weight: 700;
 }
-.button-container {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
 .buttons-container {
   display: flex;
+  gap: 15px;
 }
 .button-small {
   background: none;
-  margin-right: 15px;
   border-radius: 4px;
   padding: 7px 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid #8dd3bb;
 }
 .button-book {
-  background: none;
   width: 150px;
   background-color: #8dd3bb;
   border: none;
   border-radius: 4px;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-
 /* Photo Section */
-
 .hotel-photo-container {
   display: flex;
   justify-content: space-between;
@@ -95,92 +64,45 @@
   object-fit: cover;
 }
 .small-images {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
 }
-
 .small-images img {
-  width: 45%;
+  width: 600px;
   height: 271px;
   margin: 2.5px;
-}
-.img {
-  flex: 1;
-  align-self: stretch;
   object-fit: cover;
-  margin-bottom: 5px;
 }
 .img-top-right {
   border-radius: 0px 12px 0px 0px;
-  object-fit: cover;
 }
 .img-top-left {
   border-radius: 0px 0px 12px 0px;
-  object-fit: cover;
 }
-.flex-wrapper-one {
-  position: relative;
-}
-.flex-wrapper-one button {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  background-color: #8dd3bb;
-  border-radius: 4px;
-  padding: 8px 16px;
-  width: 143px;
-  display: flex;
-}
-
 /* Overview */
 .hotel-overview {
-  background-color: #fff;
-  display: flex;
   flex-direction: column;
   margin: 32px 80px 64px 80px;
 }
-
 .overview-frame {
   margin-bottom: 32px;
-  display: flex;
-  flex-direction: column;
 }
-
-.overview-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.overview-description {
-  max-width: 1232px;
-  opacity: 0.75;
-}
-
 .rating-container {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 150px;
-  width: 100%;
   gap: 60px;
 }
-
 .rating-box {
   background-color: #8dd3bb;
   border-radius: 12px;
   padding: 8px 64px 16px 16px;
-  display: flex;
-  flex-direction: column;
-  width: 166px;
   height: 145px;
 }
-
 .rating-info {
   display: flex;
   flex-direction: column;
 }
-
 .rating-score {
   font-size: 32px;
   font-weight: 700;
@@ -189,7 +111,6 @@
   border-radius: 12px;
   padding: 15px 63px 15px 15px;
   width: 160px;
-  height: 145px;
   border: 1px solid #8dd3bb;
   display: flex;
   flex-direction: column;
@@ -197,22 +118,12 @@
 }
 /* Rooms */
 .avaiable-rooms-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 64px;
-  margin-left: 80px;
-  margin-right: 80px;
-}
-.rooms-header p {
-  font-size: 20px;
-  font-weight: 700;
+  margin: 0 80px;
 }
 .rooms-details-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0;
 }
 .rooms-name img {
   width: 48px;
@@ -225,107 +136,63 @@
 }
 .rooms-price button {
   background-color: #8dd3bb;
-  padding: 8px 16px;
   border-radius: 4px;
   width: 150px;
   height: 48px;
   border: none;
   margin-left: 16px;
 }
-
 /* Amenities */
 .amenities-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 60px;
-  margin-left: 80px;
-  margin-right: 80px;
+  margin: 0 80px;
 }
-
-.amenities-header p {
-  font-size: 20px;
-  font-weight: 700;
-}
-
 .amenities {
-  background-color: #f5f5f5;
+  background-color: #8dd3bb;
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 10px;
 }
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1199.98px) {
   .hotel-details-container {
-    margin-left: 20px;
-    margin-right: 20px;
     flex-direction: column;
     align-items: center;
   }
-
   .hotel-photo-container {
     margin: 32px 20px 64px 20px;
     height: auto;
     flex-direction: column;
   }
-
-  .big-image {
-    margin-right: 0;
-    border-radius: 12px;
-    width: 100%;
-    height: auto;
-  }
-
   .small-images {
-    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: auto;
     margin-top: 8px;
   }
-
   .small-images img {
-    width: calc(50% - 5px);
-    height: auto;
+    width: 100%;
   }
-
   .hotel-overview {
     margin: 32px 20px 64px 20px;
   }
-
-  .avaiable-rooms-container,
-  .amenities-container {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
   .rating-container {
     flex-wrap: wrap;
     height: auto;
     padding: 20px 0;
   }
-
   .rating-box,
   .rating-category {
-    width: calc(50% - 30px);
     height: 145px;
-    margin: 0 auto;
-    margin-bottom: 20px;
   }
   .rating-score {
     font-size: 24px;
   }
-  .rating-count {
-    display: flex;
-    width: 90px;
-    font-size: 14px;
+  .avaiable-rooms-container {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
   .rooms-details-container {
-    flex-direction: column;
-    align-items: center;
+    width: calc(50% - 20px);
   }
-
   .rooms-name {
     margin-bottom: 10px;
-  }
-
-  .rooms-price {
-    text-align: center;
   }
 }

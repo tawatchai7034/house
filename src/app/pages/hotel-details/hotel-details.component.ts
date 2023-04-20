@@ -15,10 +15,10 @@ import slugify from 'slugify';
     <div class="hotel-details-container">
       <div class="hotel-info-container">
         <div class="hotel-title">
-          <p class="hotel-title-text">{{ hotel.name }}</p>
+          <h3 class="hotel-title-text">{{ hotel.name }}</h3>
         </div>
         <div class="address-container">
-          <div class="location">
+          <div>
             <img src="assets/icons/location.svg" alt="location-icon" />
           </div>
           <p>
@@ -38,10 +38,8 @@ import slugify from 'slugify';
       </div>
       <div class="button-container">
         <div class="price-container">
-          <p>
-            <strong>{{ hotel.nightlyPrice | currency }}</strong
-            >/night
-          </p>
+          <strong>{{ hotel.nightlyPrice | currency }}</strong
+          >/night
         </div>
         <div class="buttons-container">
           <button class="button-small">
@@ -57,6 +55,7 @@ import slugify from 'slugify';
       </div>
     </div>
     <!-- Hotel Details -->
+    <!-- Hotel Photos -->
     <div class="hotel-photo-container">
       <img alt="" class="big-image" [src]="hotel?.photos[0]" />
       <div class="small-images">
@@ -64,15 +63,13 @@ import slugify from 'slugify';
         <img alt="" class="img-top-right" [src]="hotel?.photos[2]" />
         <img alt="" class="img" [src]="hotel?.photos[3]" />
         <img alt="" class="img-top-left" [src]="hotel?.photos[4]" />
-
-        <div class="flex-wrapper-one">
-          <button>View All Photos</button>
-        </div>
       </div>
     </div>
+    <!-- Hotel Photos -->
+    <!-- Hotel Overview -->
     <div class="hotel-overview">
       <div class="overview-frame">
-        <p class="overview-title">Overview</p>
+        <h3 class="overview-title">Overview</h3>
         <p class="overview-description">
           {{ hotel.overview }}
         </p>
@@ -95,10 +92,11 @@ import slugify from 'slugify';
         </div>
       </div>
     </div>
+    <!-- Hotel Overview -->
     <hr />
     <div class="avaiable-rooms-container">
       <div class="rooms-header" #roomsHeader>
-        <p>Avaiable Rooms</p>
+        <h3>Avaiable Rooms</h3>
       </div>
       <div *ngFor="let room of hotel.rooms" class="rooms-details-container">
         <div class="rooms-name">
@@ -112,15 +110,15 @@ import slugify from 'slugify';
       </div>
     </div>
     <hr />
+    <!-- Hotel Overview -->
+    <!-- Hotel Amenities -->
     <div class="amenities-container">
-      <div class="amenities-header">
-        <p>Amenities</p>
-      </div>
+      <h3>Amenities</h3>
       <div *ngFor="let amenities of hotel.amenities" class="amenities">
         {{ amenities }}
       </div>
     </div>
-
+    <!-- Hotel Amenities -->
     <app-newsletter style="position: relative; top: +240px;"></app-newsletter>
     <app-footer></app-footer>
     <!-- Template End -->
