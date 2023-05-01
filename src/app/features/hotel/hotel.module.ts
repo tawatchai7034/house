@@ -13,6 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { hotelReducer } from './store/hotels.reducers';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { searchBarReducer } from './store/search/search.reducers';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
         }),
       ],
     }),
+    [StoreModule.forFeature('search', searchBarReducer)],
   ],
   exports: [
     SearchBarComponent,

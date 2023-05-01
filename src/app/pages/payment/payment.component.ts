@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadStripe } from '@stripe/stripe-js';
 import { AppStateInterface } from 'src/app/core/models/app-state.model';
 import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors';
+import { selectSearchResult } from 'src/app/features/hotel/store/search/search.selector';
 import { environment } from 'src/environments/environments';
 @Component({
   selector: 'app-payment',
@@ -41,14 +41,14 @@ import { environment } from 'src/environments/environments';
         <div class="check-in-out">
           <div class="check-in">
             <p class="check-in-label">Check-in</p>
-            <span class="check-in-date">10 April</span>
+            <span class="check-in-date">{{ checkInDate }}</span>
           </div>
           <div class="hotel-photo">
             <img class="photo" src="/assets/icons/hotel.svg" alt="" />
           </div>
           <div class="check-out">
             <p class="check-out-label">Check-out</p>
-            <span class="check-out-date">15 April</span>
+            <span class="check-out-date">{{ checkOutDate }}</span>
           </div>
         </div>
 
@@ -159,10 +159,12 @@ export class PaymentComponent implements OnInit {
   totalPrice: number = 0;
   paymentHandler: any = null;
   loggedInUser$ = this.store.select(loggedInUserSelector);
+  checkInDate: string = '';
+  checkOutDate: string = '';
+  roomsGuests: string = '';
 
   constructor(
     private store: Store<AppStateInterface>,
-    private router: Router,
     private http: HttpClient
   ) {}
   stripeKey = environment.stripeKey;
@@ -188,12 +190,32 @@ export class PaymentComponent implements OnInit {
         console.log(Error);
       }
     });
-    this.calculateTotalPrice();
-    // this.invokeStripe();
+    this.store.select(selectSearchResult).subscribe((searchResult) => {
+      if (searchResult.length > 0) {
+        this.checkInDate = searchResult[0].checkIn;
+        this.checkOutDate = searchResult[0].checkOut;
+        this.roomsGuests = searchResult[0].roomsGuests;
+      }
+      this.calculateTotalPrice();
+    });
   }
   calculateTotalPrice() {
-    const taxAmount = this.room.price * this.tax;
-    this.totalPrice = this.room.price + taxAmount + this.serviceFee;
+    let numberOfGuests = 0;
+    if (this.roomsGuests) {
+      const [rooms, adults, children] = this.roomsGuests.split(',');
+      numberOfGuests = parseInt(adults) + parseInt(children);
+    }
+
+    // Calculate the number of days between checkInDate and checkOutDate
+    const checkInDate = new Date(this.checkInDate);
+    const checkOutDate = new Date(this.checkOutDate);
+    const timeDiff = checkOutDate.getTime() - checkInDate.getTime();
+    const numberOfDays = timeDiff / (1000 * 3600 * 24);
+
+    // Calculate the total price
+    const basePrice = this.room.price * numberOfGuests * numberOfDays;
+    const taxAmount = basePrice * this.tax;
+    this.totalPrice = basePrice + taxAmount + this.serviceFee;
   }
 
   onCheckout() {

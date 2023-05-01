@@ -14,6 +14,7 @@ import { HotelDataModel } from '../../store/hotel.model';
 import { hotelsSelector } from '../../store/hotels.selectors';
 import { Router } from '@angular/router';
 import slugify from 'slugify';
+import { updateSearchBar } from '../../store/search/search.action';
 
 @Component({
   selector: 'app-search-bar',
@@ -214,8 +215,22 @@ export class SearchBarComponent {
   }
   submit() {
     if (this.form.valid) {
-      const country = this.form.value.destination;
+      const { destination, checkIn, checkOut, roomsGuests } = this.form.value;
+      const country = destination;
       const countrySlug = slugify(country, { lower: true });
+      this.store.dispatch(
+        updateSearchBar({
+          searchResult: [
+            {
+              destination,
+              checkIn,
+              checkOut,
+              roomsGuests,
+            },
+          ],
+        })
+      );
+
       this.router.navigate(['/hotel-listing'], {
         queryParams: { country: countrySlug },
       });
