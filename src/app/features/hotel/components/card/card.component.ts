@@ -14,10 +14,9 @@ import { HotelDataModel } from '../../store/hotel.model';
           <p>An amazing journey</p>
         </section>
         <section class="card-price">
-          {{ hotel?.nightlyPrice | currency }}
+          <span> {{ hotel?.nightlyPrice | currency }}</span> /night
         </section>
       </div>
-      <button (click)="onBookNowClick()">Book Now</button>
     </div>
   `,
   styleUrls: ['./card.component.css'],

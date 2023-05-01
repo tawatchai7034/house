@@ -25,7 +25,7 @@ import slugify from 'slugify';
         [ngClass]="{ 'invalid-form': formSubmitted && form.invalid }"
       >
         <section class="section-title">
-          <p>Where are you flying?</p>
+          <p>Find your stay!</p>
         </section>
         <form [formGroup]="form" (ngSubmit)="submit()">
           <section class="inputs-container">

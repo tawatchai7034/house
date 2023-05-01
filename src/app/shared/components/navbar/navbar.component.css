@@ -144,21 +144,7 @@
 :host(.active) .logged-in-container {
   color: #000;
 }
-.hamburger {
-  display: inline-block;
-  cursor: pointer;
-  display: none;
-}
 
-.hamburger div {
-  width: 35px;
-  height: 5px;
-  background-color: #fff;
-  margin: 6px 0;
-}
-:host(.active) .hamburger div {
-  background-color: #000;
-}
 .user-name {
   cursor: pointer;
 }
@@ -181,32 +167,6 @@
     flex-direction: column;
     color: #fff;
     gap: 5px;
-  }
-  .hamburger {
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  .hamburger div {
-    width: 35px;
-    height: 5px;
-    margin: 6px 0;
-    transition: all 0.3s ease;
-  }
-
-  /* Rotate first line */
-  .hamburger.active .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  /* Hide middle line */
-  .hamburger.active .line2 {
-    opacity: 0;
-  }
-
-  /* Rotate last line */
-  .hamburger.active .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
   }
   .logged-in-container {
     display: none;

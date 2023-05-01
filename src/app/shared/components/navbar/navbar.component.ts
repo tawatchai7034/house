@@ -32,15 +32,6 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
         <li class="company-name">
           <h3 routerLink="/">Kagan Booking</h3>
         </li>
-        <div
-          class="hamburger"
-          (click)="toggleMenu()"
-          [ngClass]="{ active: menuActive }"
-        >
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
-        </div>
 
         <li
           class="button-section"
