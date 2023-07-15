@@ -43,7 +43,6 @@
   height: 51px;
   font-weight: 700;
   font-size: 40px;
-
   width: 100%;
 }
 
@@ -152,5 +151,75 @@ span {
   }
   .form-container {
     width: 80%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .signup-container {
+    display: flex;
+    justify-content: center;
+    margin-left: 8px;
+    margin-right: 8px;
+    padding-top: 40px;
+    gap: 0;
+    height: 100vh;
+  }
+  .logo {
+    margin-bottom: 32px;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+  .back-button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+  .button-container {
+    width: 100%;
+    height: auto;
+    gap: 0;
+  }
+  .form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 767px) and (max-width: 1279px) {
+  .signup-container {
+    justify-content: center;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    gap: 0;
+    height: 100vh;
+  }
+  .back-button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+  .form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .logo {
+    margin-bottom: 32px;
   }
 }
