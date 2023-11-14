@@ -3,6 +3,7 @@
   justify-content: space-between;
   margin-left: 80px;
   margin-right: 80px;
+
 }
 .payment-info-container {
   width: 60%;
@@ -117,6 +118,7 @@
 .card-container {
   width: 40%;
   padding: 0 32px;
+
 }
 .card-hotel-image-info {
   display: flex;
@@ -245,4 +247,13 @@ tr.total td:last-child {
   width: 60px;
   height: 40px;
   object-fit: contain;
+}
+@media only screen and (max-width: 1199.98px) {
+.payment-container {
+  display: block;
+  width: 100%;
+  }
+.card-container {
+  width: 70%;
+  }
 }

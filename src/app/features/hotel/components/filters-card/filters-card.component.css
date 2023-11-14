@@ -2,6 +2,7 @@
   display: block;
   border-radius: 12px;
   width: 100%;
+
 }
 
 .accommodation-list {
@@ -143,7 +144,7 @@ br {
 
 @media only screen and (max-width: 767.98px) {
   .filters-card-container {
-    width: 80%;
+    width: 100%;
   }
   .card-container {
     height: 700px;
@@ -174,6 +175,7 @@ br {
     flex-direction: column;
     gap: 10px;
   }
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1399px) {
@@ -186,4 +188,5 @@ br {
   .card-items-container {
     width: 60%;
   }
+
 }

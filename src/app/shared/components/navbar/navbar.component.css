@@ -1,14 +1,18 @@
 .navbar-container {
-  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
 }
 
 .navbar-item-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style: none;
   text-align: center;
   align-items: center;
   padding: 15px;
+  width: 150vw;
 }
 
 .button-section {
@@ -151,7 +155,7 @@
 
 @media only screen and (max-width: 575.98px) {
   .navbar-container {
-    width: 100%;
+    display: block;
   }
 
   .button-section {
@@ -162,26 +166,8 @@
     height: 100%;
     border: none;
   }
-  .logged-in-container {
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    gap: 5px;
-  }
-  .logged-in-container {
-    display: none;
-    position: absolute;
-    top: 7%;
-    right: 0;
-  }
-  :host(.active) .logged-in-container {
-    color: #000;
-
-    right: 13%;
-  }
-  .logged-in-container.active {
-    display: flex;
-    flex-direction: column;
+  .navbar-item-container{
+    width: 100%;
   }
   .user-avatar,
   .user-favourites,
