@@ -5,6 +5,16 @@ import { select, Store } from '@ngrx/store';
 import { AppStateInterface } from '../../core/models/app-state.model';
 import { errorSelector, hotelsSelector, isLoadingSelector } from '../../features/hotel/store/hotels.selectors';
 
+interface HotelListingData {
+  isLoading$: Observable<boolean>;
+  error$: Observable<string | null>;
+  hotels$: Observable<HotelDataModel[]>;
+  hotelCount: number;
+  motelCount: number;
+  resortCount: number;
+  totalCount: number;
+}
+
 @Component({
   selector: 'app-hotel-listing',
   templateUrl: './hotel-listing.component.html',
@@ -12,7 +22,7 @@ import { errorSelector, hotelsSelector, isLoadingSelector } from '../../features
 })
 
 export class HotelListingComponent implements OnInit, OnDestroy {
-  data: any;
+  data: HotelListingData | null = null;
   isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
   hotels$: Observable<HotelDataModel[]>;

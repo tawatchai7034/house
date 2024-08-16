@@ -8,7 +8,7 @@ export interface AuthSignupModel {
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber: string;
   password: string;
 }
 export interface UserModel {
@@ -17,5 +17,5 @@ export interface UserModel {
   lastName: string;
   email: string;
   password: string;
-  phoneNumber: number;
+  phoneNumber: string;
 }

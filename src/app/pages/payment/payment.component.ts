@@ -22,7 +22,6 @@ export class PaymentComponent implements OnInit {
   tax = 0.18;
   serviceFee = 5;
   totalPrice = 0;
-  paymentHandler: any = null;
   loggedInUser$ = this.store.select(loggedInUserSelector);
   checkInDate = '';
   checkOutDate = '';

@@ -5,20 +5,20 @@
 <div class="hotel-details-container">
     <div class="hotel-info-container">
         <div class="hotel-title">
-            <h3 class="hotel-title-text">{{ hotel.name }}</h3>
+            <h3 class="hotel-title-text">{{ hotel?.name }}</h3>
         </div>
         <div class="address-container">
             <div>
                 <img src="assets/icons/location.svg" alt="location-icon" />
             </div>
             <p>
-                {{ hotel.address.streetAddress }}, {{ hotel.address.city }},
-                {{ hotel.address.country }}
+                {{ hotel?.address?.streetAddress }}, {{ hotel?.address?.city }},
+                {{ hotel?.address?.country }}
             </p>
         </div>
         <div class="hotel-title-and-rating">
             <div class="rating">
-                <span>{{ hotel.rating }}</span>
+                <span>{{ hotel?.rating }}</span>
             </div>
             <span>
                 <strong>Very Good</strong>
@@ -28,7 +28,7 @@
     </div>
     <div class="button-container">
         <div class="price-container">
-            <strong>{{ hotel.nightlyPrice | currency }}</strong>/night
+            <strong>{{ hotel?.nightlyPrice | currency }}</strong>/night
         </div>
         <div class="buttons-container">
             <button class="button-small">
@@ -46,12 +46,12 @@
 <!-- Hotel Details -->
 <!-- Hotel Photos -->
 <div class="hotel-photo-container">
-    <img alt="" class="big-image" [src]="hotel?.photos[0]" />
+    <img alt="" class="big-image" [src]="hotel?.photos?.[0]" />
     <div class="small-images">
-        <img alt="" class="img" [src]="hotel?.photos[1]" />
-        <img alt="" class="img-top-right" [src]="hotel?.photos[2]" />
-        <img alt="" class="img" [src]="hotel?.photos[3]" />
-        <img alt="" class="img-top-left" [src]="hotel?.photos[4]" />
+        <img alt="" class="img" [src]="hotel?.photos?.[1]" />
+        <img alt="" class="img-top-right" [src]="hotel?.photos?.[2]" />
+        <img alt="" class="img" [src]="hotel?.photos?.[3]" />
+        <img alt="" class="img-top-left" [src]="hotel?.photos?.[4]" />
     </div>
 </div>
 <!-- Hotel Photos -->
@@ -60,12 +60,12 @@
     <div class="overview-frame">
         <h3 class="overview-title">Overview</h3>
         <p class="overview-description">
-            {{ hotel.overview }}
+            {{ hotel?.overview }}
         </p>
     </div>
     <div class="rating-container">
         <div class="rating-box">
-            <p class="rating-score">{{ hotel.rating }}</p>
+            <p class="rating-score">{{ hotel?.rating }}</p>
             <div class="rating-info">
                 <span class="rating-text">
                     <strong>Very good</strong>
@@ -87,9 +87,9 @@
     <div class="rooms-header" #roomsHeader>
         <h3>Avaiable Rooms</h3>
     </div>
-    <div *ngFor="let room of hotel.rooms" class="rooms-details-container">
+    <div *ngFor="let room in hotel?.rooms" class="rooms-details-container">
         <div class="rooms-name">
-            <img [src]="hotel.photos[0]" alt="" />
+            <img [src]="hotel?.photos?.[0]" alt="" />
             <span>{{ room.name }}</span>
         </div>
         <div class="rooms-price">
@@ -103,7 +103,7 @@
 <!-- Hotel Amenities -->
 <div class="amenities-container">
     <h3>Amenities</h3>
-    <div *ngFor="let amenities of hotel.amenities" class="amenities">
+    <div *ngFor="let amenities of hotel?.amenities" class="amenities">
         {{ amenities }}
     </div>
 </div>
