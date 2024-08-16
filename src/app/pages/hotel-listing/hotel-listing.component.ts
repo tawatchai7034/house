@@ -1,38 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { HotelDataModel } from '../../features/hotel/store/hotel.model';
 import { select, Store } from '@ngrx/store';
 import { AppStateInterface } from '../../core/models/app-state.model';
-import {
-  errorSelector,
-  hotelsSelector,
-  isLoadingSelector,
-} from '../../features/hotel/store/hotels.selectors';
+import { errorSelector, hotelsSelector, isLoadingSelector } from '../../features/hotel/store/hotels.selectors';
+
+interface HotelListingData {
+  isLoading$: Observable<boolean>;
+  error$: Observable<string | null>;
+  hotels$: Observable<HotelDataModel[]>;
+  hotelCount: number;
+  motelCount: number;
+  resortCount: number;
+  totalCount: number;
+}
 
 @Component({
   selector: 'app-hotel-listing',
-  template: `
-    <app-navbar class="active"></app-navbar>
-    <div class="hotels-listing-container">
-      <!-- <app-hotels-filters></app-hotels-filters> -->
-      <app-filters-card [data]="data"></app-filters-card>
-    </div>
-    <app-newsletter style="position: relative; top: +240px;"></app-newsletter>
-    <app-footer></app-footer>
-  `,
+  templateUrl: './hotel-listing.component.html',
   styleUrls: ['./hotel-listing.component.css'],
 })
-export class HotelListingComponent implements OnInit {
-  data: any;
+
+export class HotelListingComponent implements OnInit, OnDestroy {
+  data: HotelListingData | null = null;
   isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
   hotels$: Observable<HotelDataModel[]>;
 
-  hotelCount: number = 0;
-  motelCount: number = 0;
-  resortCount: number = 0;
-  totalCount: number = 0;
+  hotelCount = 0;
+  motelCount = 0;
+  resortCount = 0;
+  totalCount = 0;
 
+  unsubscribe$ = new Subject<void>();
+  
   constructor(private store: Store<AppStateInterface>) {
     this.error$ = this.store.pipe(select(errorSelector));
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
@@ -40,31 +41,28 @@ export class HotelListingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.hotels$
-      .pipe(
+    this.hotels$.pipe(
+      takeUntil(this.unsubscribe$),
         map((hotels) => ({
-          hotelCount: hotels.filter(
-            (hotel) => hotel.accommodationType === 'hotel'
-          ).length,
-          motelCount: hotels.filter(
-            (hotel) => hotel.accommodationType === 'motel'
-          ).length,
-          resortCount: hotels.filter(
-            (hotel) => hotel.accommodationType === 'resort'
-          ).length,
+          hotelCount: hotels.filter((hotel) => hotel.accommodationType === 'hotel').length,
+          motelCount: hotels.filter((hotel) => hotel.accommodationType === 'motel').length,
+          resortCount: hotels.filter((hotel) => hotel.accommodationType === 'resort').length,
           totalCount: hotels.length,
         }))
-      )
-      .subscribe(({ hotelCount, motelCount, resortCount, totalCount }) => {
+      ).subscribe(({ hotelCount, motelCount, resortCount, totalCount }) => {
         this.data = {
           isLoading$: this.isLoading$,
           error$: this.error$,
           hotels$: this.hotels$,
-          hotelCount: hotelCount,
-          motelCount: motelCount,
-          resortCount: resortCount,
-          totalCount: totalCount,
+          hotelCount,
+          motelCount,
+          resortCount,
+          totalCount,
         };
       });
+  }
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

@@ -1,87 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { AppStateInterface } from 'src/app/core/models/app-state.model';
+import { AuthLoginModel } from 'src/app/features/auth/store/auth.model';
 import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors';
 
 @Component({
   selector: 'app-user-profile',
-  template: `
-    <!-- Template Start -->
-    <div class="user-profile-container">
-      <div class="user-info-container">
-        <div class="user-info">
-          <div class="user-image-and-name">
-            <div class="user-image-container">
-              <span class="username-logo">{{ firstName | logo }}</span>
-              <div class="pen">
-                <img src="/assets/icons/pencil.svg" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="user-name-and-email">
-            <p class="username">{{ firstName }} {{ lastName }}</p>
-            <p class="user-email">{{ userEmail }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="account-sections">
-        <section class="account-section-title" (click)="activeTab = 'account'">
-          Account
-        </section>
-        <hr />
-        <section class="account-section-title" (click)="activeTab = 'booking'">
-          Bookings
-        </section>
-        <hr />
-        <section class="account-section-title" (click)="activeTab = 'payment'">
-          Payment methods
-        </section>
-        <hr />
-      </div>
-
-      <app-account-info
-        [loggedInUser]="loggedInUser$ | async"
-        *ngIf="activeTab === 'account'"
-      ></app-account-info>
-
-      <app-bookings-info *ngIf="activeTab === 'booking'"></app-bookings-info>
-      <app-payment-info *ngIf="activeTab === 'payment'"></app-payment-info>
-      <div class="logout-button-container">
-        <button (click)="logout()">LOG OUT</button>
-      </div>
-    </div>
-    <!-- Template End -->
-  `,
+  templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
 })
-export class UserProfileComponent implements OnInit {
-  loggedInUser$ = this.store.select(loggedInUserSelector);
-  activeTab: string = 'account';
-  firstName: string = '';
-  lastName: string = '';
-  userEmail: string = '';
+export class UserProfileComponent implements OnInit, OnDestroy {
+  loggedInUser$!: Observable<AuthLoginModel[]>; // loggedInUser$'ın tipi
+  activeTab = 'account';
+  firstName = '';
+  lastName = '';
+  userEmail = '';
 
-  constructor(
-    private store: Store<AppStateInterface>,
-    private router: Router
-  ) {}
+  unsubscribe$ = new Subject<void>();
+
+  constructor(private store: Store<AppStateInterface>, private router: Router) {}
 
   ngOnInit(): void {
+    this.loggedInUser$ = this.store.select(loggedInUserSelector).pipe(map(user => user || []),
+      takeUntil(this.unsubscribe$)
+    );
     this.loggedInUser$.subscribe((loggedInUser) => {
       if (loggedInUser) {
         this.firstName = loggedInUser[0].user.firstName;
         this.lastName = loggedInUser[0].user.lastName;
         this.userEmail = loggedInUser[0].user.email;
       } else {
-        console.log(Error);
+        console.error(new Error('Logged in user not found'));
       }
     });
+}
+
+  get loggedInUser(): AuthLoginModel[] {
+    let userArray: AuthLoginModel[] = [];
+    this.loggedInUser$.subscribe(users => userArray = users);
+    return userArray; 
   }
+
   logout(): void {
     localStorage.removeItem('loggedInUser');
     this.router.navigate(['/']).then(() => {
       location.reload();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }
