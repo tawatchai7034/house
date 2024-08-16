@@ -1,37 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+interface User {
+  firstName: string;
+  email: string;
+  phoneNumber: string;
+}
+
+interface LoggedInUser {
+  user: User;
+}
+
 @Component({
   selector: 'app-account-info',
-  template: `
-    <!-- Template Start -->
-    <div class="edit-account-info">
-      <p class="edit-account-info-title">Account</p>
-      <div class="edit-user">
-        <div
-          class="edit-user-name-container"
-          *ngFor="let userInfo of userInfoContainers"
-        >
-          <div class="label-and-value">
-            <p class="user-label">{{ userInfo.label }}</p>
-            <p class="user-label-value">{{ userInfo.value }}</p>
-          </div>
-          <div class="edit-button-container">
-            <img
-              alt=""
-              class="edit-icon"
-              src="https://static.overlay-tech.com/assets/8f50f45c-4be1-4196-8697-bf5c906f92b6.svg"
-            />
-            <span class="button">{{ userInfo.button }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Template End -->
-  `,
+  templateUrl: './account-info.component.html',
   styleUrls: ['./account-info.component.css'],
 })
 export class AccountInfoComponent implements OnInit {
-  @Input() loggedInUser: any;
+  @Input() loggedInUser!: LoggedInUser[];
 
   userInfoContainers = [
     {
@@ -64,7 +49,7 @@ export class AccountInfoComponent implements OnInit {
       this.userInfoContainers[1].value = this.loggedInUser[0].user.email;
       this.userInfoContainers[3].value = this.loggedInUser[0].user.phoneNumber;
     } else {
-      console.log(new Error('Logged in user not found'));
+      console.error(new Error('Logged in user not found'));
     }
   }
 }
