@@ -27,10 +27,7 @@ export class PaymentComponent implements OnInit {
   checkOutDate = '';
   roomsGuests = '';
 
-  constructor(
-    private store: Store<AppStateInterface>,
-    private http: HttpClient
-  ) {}
+  constructor(private readonly store: Store<AppStateInterface>, private readonly http: HttpClient) {}
   stripeKey = environment.stripeKey;
 
   ngOnInit() {

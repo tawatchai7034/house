@@ -13,29 +13,7 @@ import slugify from 'slugify';
 
 @Component({
   selector: 'app-content',
-  template: `
-    <!-- Template Start -->
-
-    <div class="content-container">
-      <h3>Fall into travel</h3>
-      <p>
-        Going somewhere to celebrate this season? Whether you’re going home or
-        somewhere to roam, we’ve got the travel tools to get you to your
-        destination.
-      </p>
-      <div class="content-card-container">
-        <ng-container *ngIf="hotels$ | async as hotels">
-          <ng-container *ngFor="let hotel of hotels | slice : 0 : 4">
-            <app-card
-              [hotel]="hotel"
-              (bookNowClick)="onHotelBookNowClick($event)"
-            ></app-card>
-          </ng-container>
-        </ng-container>
-      </div>
-    </div>
-    <!-- Template End -->
-  `,
+  templateUrl: './content.component.html',
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent {
@@ -43,7 +21,7 @@ export class ContentComponent {
   error$: Observable<string | null>;
   hotels$: Observable<HotelDataModel[]>;
 
-  constructor(private store: Store<AppStateInterface>, private router: Router) {
+  constructor(private readonly store: Store<AppStateInterface>, private readonly router: Router) {
     this.error$ = this.store.pipe(select(errorSelector));
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.hotels$ = this.store.pipe(select(hotelsSelector));

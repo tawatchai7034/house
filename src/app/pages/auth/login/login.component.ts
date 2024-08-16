@@ -8,59 +8,13 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  template: `
-    <div class="login-container">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="login-inputs-container">
-          <button class="back-button" (click)="backToHome()">&#8592;</button>
-          <h1 class="logo">Kagan Booking</h1>
-          <h3 class="login-title">Login</h3>
-          <p class="login-description">
-            Login to access your Kagan Booking account
-          </p>
-          <section class="input-container">
-            <input type="email" placeholder="e-mail" formControlName="email" />
-            <input
-              type="password"
-              placeholder="password"
-              formControlName="password"
-            />
-            <span class="error-message">{{
-              loginForm.get('errorMessage')?.value
-            }}</span>
-          </section>
-          <section class="password-section">
-            <label>
-              <input type="checkbox" />
-              Remember me
-            </label>
-            <button class="forgot-password-button">Forgot Password</button>
-          </section>
-          <div class="button-container">
-            <button class="login-button">Login</button>
-            <p>
-              Don't have an account?
-              <a href="" routerLink="/sign-up" class="login-to-signup"
-                >Sign up</a
-              >
-            </p>
-            <app-social-buttons text="login"></app-social-buttons>
-          </div>
-        </div>
-      </form>
-      <div class="login-image"></div>
-    </div>
-  `,
+  templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private store: Store<AppStateInterface>,
-    private router: Router
-  ) {
+  constructor(private readonly fb: FormBuilder, private readonly store: Store<AppStateInterface>, private readonly router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: '',
@@ -69,13 +23,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     //After login, if the user is logged in, navigate to the home page
-    this.store
-      .select(AuthSelectors.loggedInUserSelector)
-      .subscribe((loggedInUser) => {
-        if (loggedInUser) {
-          console.log('Login Successful');
-          this.router.navigate(['/']);
-        }
+    this.store.select(AuthSelectors.loggedInUserSelector).subscribe((loggedInUser) => {
+        if (loggedInUser) this.router.navigate(['/']);
       });
   }
 
@@ -83,14 +32,10 @@ export class LoginComponent implements OnInit {
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
     //Check user credentials
-    this.store
-      .select(AuthSelectors.loggedInUserSelector)
-      .subscribe((loggedInUser) => {
+    this.store.select(AuthSelectors.loggedInUserSelector).subscribe((loggedInUser) => {
         //If the user is not logged in, set the error message
         if (!loggedInUser) {
-          this.loginForm
-            .get('errorMessage')
-            ?.setValue('Invalid Email or Password');
+          this.loginForm.get('errorMessage')?.setValue('Invalid Email or Password');
         } else {
           //If the user is logged in, set the error message to an empty string
           this.loginForm.get('errorMessage')?.setValue('');

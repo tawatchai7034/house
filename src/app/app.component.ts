@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store) {}
+  constructor(private readonly store: Store) {}
 
   ngOnInit() {
     this.store.dispatch(HotelsActions.loadHotels());
