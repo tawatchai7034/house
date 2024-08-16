@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppStateInterface } from 'src/app/core/models/app-state.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import slugify from 'slugify';
+import { HotelDataModel } from 'src/app/features/hotel/store/hotel.model';
 
 @Component({
   selector: 'app-hotel-details',
@@ -10,7 +11,7 @@ import slugify from 'slugify';
   styleUrls: ['./hotel-details.component.css'],
 })
 export class HotelDetailsComponent implements OnInit {
-  hotel: any;
+  hotel: HotelDataModel | undefined;
   categories: string[] = [];
   @ViewChild('roomsHeader') roomsHeader!: ElementRef;
 
@@ -32,7 +33,7 @@ export class HotelDetailsComponent implements OnInit {
   bookRoom(room: any) {
     localStorage.setItem('roomName', room.name);
     localStorage.setItem('roomPrice', room.price.toString());
-    localStorage.setItem('hotelName', this.hotel.name);
+    localStorage.setItem('hotelName', this.hotel?.name!);
     this.router.navigate(['/payment']);
   }
 
