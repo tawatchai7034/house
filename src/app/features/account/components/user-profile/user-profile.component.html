@@ -30,7 +30,7 @@
         <hr />
     </div>
 
-    <app-account-info [loggedInUser]="loggedInUser$ | async" *ngIf="activeTab === 'account'"></app-account-info>
+    <app-account-info [loggedInUser]="loggedInUser" *ngIf="activeTab === 'account'"></app-account-info>
 
     <app-bookings-info *ngIf="activeTab === 'booking'"></app-bookings-info>
     <app-payment-info *ngIf="activeTab === 'payment'"></app-payment-info>

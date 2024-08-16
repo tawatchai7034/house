@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, takeUntil } from 'rxjs';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { AppStateInterface } from 'src/app/core/models/app-state.model';
+import { AuthLoginModel } from 'src/app/features/auth/store/auth.model';
 import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors';
 
 @Component({
@@ -10,8 +11,8 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
 })
-export class UserProfileComponent implements OnInit {
-  loggedInUser$ = this.store.select(loggedInUserSelector);
+export class UserProfileComponent implements OnInit, OnDestroy {
+  loggedInUser$!: Observable<AuthLoginModel[]>; // loggedInUser$'ın tipi
   activeTab = 'account';
   firstName = '';
   lastName = '';
@@ -22,20 +23,35 @@ export class UserProfileComponent implements OnInit {
   constructor(private store: Store<AppStateInterface>, private router: Router) {}
 
   ngOnInit(): void {
-    this.loggedInUser$.pipe(takeUntil(this.unsubscribe$)).subscribe((loggedInUser) => {
+    this.loggedInUser$ = this.store.select(loggedInUserSelector).pipe(map(user => user || []),
+      takeUntil(this.unsubscribe$)
+    );
+    this.loggedInUser$.subscribe((loggedInUser) => {
       if (loggedInUser) {
         this.firstName = loggedInUser[0].user.firstName;
         this.lastName = loggedInUser[0].user.lastName;
         this.userEmail = loggedInUser[0].user.email;
       } else {
-        console.error(Error);
+        console.error(new Error('Logged in user not found'));
       }
     });
+}
+
+  get loggedInUser(): AuthLoginModel[] {
+    let userArray: AuthLoginModel[] = [];
+    this.loggedInUser$.subscribe(users => userArray = users);
+    return userArray; 
   }
+
   logout(): void {
     localStorage.removeItem('loggedInUser');
     this.router.navigate(['/']).then(() => {
       location.reload();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }
