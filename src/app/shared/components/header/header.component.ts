@@ -2,22 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
-  template: `
-    <!-- Template Start -->
-    <div class="header-container">
-      <app-navbar></app-navbar>
-      <div class="header-content-container">
-        <p>{{ HeaderTitle }}</p>
-        <p>{{ HeaderSubTitle }}</p>
-        <p>{{ HeaderDescription }}</p>
-      </div>
-    </div>
-    <!-- Template End -->
-  `,
+  templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
+
 export class HeaderComponent {
-  HeaderTitle: string = 'Explore, Dream, Discover';
-  HeaderSubTitle: string = 'LIVE & TRAVEL';
-  HeaderDescription: string = 'Special offers to suit your plan';
+  headerTitle = 'Explore, Dream, Discover';
+  headerSubTitle = 'LIVE & TRAVEL';
+  headerDescription = 'Special offers to suit your plan';
 }
