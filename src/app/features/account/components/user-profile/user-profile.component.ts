@@ -12,7 +12,7 @@ import { loggedInUserSelector } from 'src/app/features/auth/store/auth.selectors
   styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
-  loggedInUser$!: Observable<AuthLoginModel[]>; // loggedInUser$'ın tipi
+  loggedInUser$!: Observable<AuthLoginModel[]>;
   activeTab = 'account';
   firstName = '';
   lastName = '';
@@ -20,7 +20,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   unsubscribe$ = new Subject<void>();
 
-  constructor(private store: Store<AppStateInterface>, private router: Router) {}
+  constructor(private readonly store: Store<AppStateInterface>, private readonly router: Router) {}
 
   ngOnInit(): void {
     this.loggedInUser$ = this.store.select(loggedInUserSelector).pipe(map(user => user || []),

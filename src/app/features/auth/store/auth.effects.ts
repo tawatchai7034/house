@@ -6,6 +6,8 @@ import * as AuthActions from './auth.actions';
 
 @Injectable()
 export class AuthEffects {
+  constructor(private readonly actions$: Actions, private readonly authService: AuthService) {}
+
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.login),
@@ -17,6 +19,7 @@ export class AuthEffects {
       )
     )
   );
+
   signup$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.signUp),
@@ -37,5 +40,4 @@ export class AuthEffects {
     )
   );
 
-  constructor(private actions$: Actions, private authService: AuthService) {}
 }

@@ -37,7 +37,7 @@ export class SearchBarComponent {
     children: 0,
   };
 
-  constructor(private fb: FormBuilder, private modalService: NgbModal, private store: Store<AppStateInterface>, private router: Router) {
+  constructor(private readonly fb: FormBuilder, private readonly modalService: NgbModal, private readonly store: Store<AppStateInterface>, private readonly router: Router) {
     // Initialize the form property using the FormBuilder dependency
     this.form = this.fb.group({
       destination: '',

@@ -15,7 +15,7 @@ export class HotelDetailsComponent implements OnInit {
   categories: string[] = [];
   @ViewChild('roomsHeader') roomsHeader!: ElementRef;
 
-  constructor(private router: Router, private route: ActivatedRoute, private store: Store<AppStateInterface>) {}
+  constructor(private readonly router: Router, private readonly route: ActivatedRoute, private readonly store: Store<AppStateInterface>) {}
 
   ngOnInit() {
     // Get the slug from the URL route

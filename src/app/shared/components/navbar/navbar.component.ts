@@ -13,9 +13,9 @@ export class NavbarComponent implements OnInit {
   loggedInUser$ = this.store.select(loggedInUserSelector);
   firstName = '';
   menuActive = false;
-  private unsubscribe$ = new Subject<void>();
+  private readonly unsubscribe$ = new Subject<void>();
 
-  constructor(private store: Store<AppStateInterface>) {}
+  constructor(private readonly store: Store<AppStateInterface>) {}
 
   ngOnInit(): void {
     this.loggedInUser$.pipe(takeUntil(this.unsubscribe$)).subscribe((loggedInUser) => {
