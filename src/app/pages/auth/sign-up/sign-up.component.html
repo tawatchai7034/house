@@ -24,15 +24,15 @@
                 <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
             </div>
         </section>
-        <div class="error-messages">
+        <div class="error-messages" *ngIf="signUpForm.errors && (signUpForm.touched || signUpForm.dirty)">
             <span>{{ getErrorMessage('firstName') }}</span>
             <span>{{ getErrorMessage('lastName') }}</span>
             <span>{{ getErrorMessage('email') }}</span>
             <span>{{ getErrorMessage('phoneNumber') }}</span>
             <span>{{ getErrorMessage('password') }}</span>
             <span>{{ confirmPasswordError }}</span>
-            <span>{{ signUpForm.errors?.['passwordMismatch'] ? '* Passwords do not match' : '' }}</span>
-          </div>
+            <span *ngIf="signUpForm.errors?.['passwordMismatch']">* Passwords do not match</span>
+        </div>
         <section class="terms">
             <input type="checkbox" />
             <label>I agree to all <span>Terms </span>and
