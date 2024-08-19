@@ -4,7 +4,6 @@ import { CardComponent } from './components/card/card.component';
 import { ContentComponent } from './components/content/content.component';
 import { FiltersCardComponent } from './components/filters-card/filters-card.component';
 import { HotelsFiltersComponent } from './components/hotels-filters/hotels-filters.component';
-import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
@@ -12,7 +11,6 @@ import { HotelsEffects } from './store/hotels.effects';
 import { StoreModule } from '@ngrx/store';
 import { hotelReducer } from './store/hotels.reducers';
 import { localStorageSync } from 'ngrx-store-localstorage';
-import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { searchBarReducer } from './store/search/search.reducers';
 
 @NgModule({
@@ -21,9 +19,7 @@ import { searchBarReducer } from './store/search/search.reducers';
     ContentComponent,
     FiltersCardComponent,
     HotelsFiltersComponent,
-    NewsletterComponent,
     SearchBarComponent,
-    TestimonialsComponent,
   ],
   imports: [
     CommonModule,
@@ -43,10 +39,8 @@ import { searchBarReducer } from './store/search/search.reducers';
   exports: [
     SearchBarComponent,
     ContentComponent,
-    NewsletterComponent,
     FiltersCardComponent,
     HotelsFiltersComponent,
-    TestimonialsComponent,
   ],
 })
 export class HotelModule {}
