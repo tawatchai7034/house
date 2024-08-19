@@ -12,37 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
-  signUpForm: FormGroup;
+  signUpForm!: FormGroup;
 
-  constructor(private readonly fb: FormBuilder, private readonly store: Store<AppStateInterface>, private readonly router: Router) {
-    this.signUpForm = this.fb.group(
-      {
-        firstName: ['', [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
-          Validators.pattern('^[a-zA-Z]*')
-        ]],
-        lastName: ['', [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
-          Validators.pattern('^[a-zA-ZığüşöçİĞÜŞÖÇ]*')
-        ]],
-        phoneNumber: ['', [
-          Validators.required,
-          Validators.pattern('^\\d{11}'),
-          Validators.minLength(11),
-          Validators.maxLength(11)
-        ]],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-
-        confirmPassword: ['', Validators.required],
-      },
-      { validators: this.passwordMatchValidator }
-    );
-  }
+  constructor(private readonly fb: FormBuilder, private readonly store: Store<AppStateInterface>, private readonly router: Router) {}
 
   ngOnInit() {
     this.store.select(AuthSelectors.signUpUserSelector).subscribe((signUpUser) => {
@@ -50,6 +22,14 @@ export class SignUpComponent implements OnInit {
           this.router.navigate(['/login']);
         }
       });
+    this.signUpForm = this.fb.group({
+        firstName: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('^[a-zA-Z]*')])],
+        lastName: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('^[a-zA-ZığüşöçİĞÜŞÖÇ]*')])],
+        phoneNumber: ['', Validators.compose([Validators.required, Validators.pattern('^\\d{11}'), Validators.minLength(11), Validators.maxLength(11)])],
+        email: ['', Validators.compose([Validators.required, Validators.email])],
+        password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+        confirmPassword: ['', Validators.required],
+      }, { validators: this.passwordMatchValidator });
   }
 
   passwordMatchValidator(formGroup: FormGroup) {
@@ -61,12 +41,7 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     if (this.signUpForm.invalid) return;    
 
-    const firstName = this.signUpForm.get('firstName')?.value;
-    const lastName = this.signUpForm.get('lastName')?.value;
-    const phoneNumber = this.signUpForm.get('phoneNumber')?.value;
-    const email = this.signUpForm.get('email')?.value;
-    const password = this.signUpForm.get('password')?.value;
-
+    const {firstName, lastName, email, phoneNumber, password} = this.signUpForm.value;
     this.store.dispatch(
       AuthActions.signUp({ firstName, lastName, email, phoneNumber, password })
     );
@@ -100,12 +75,8 @@ export class SignUpComponent implements OnInit {
 
   get confirmPasswordError(): string {
     const confirmPasswordControl = this.signUpForm.get('confirmPassword');
-    if (confirmPasswordControl?.errors?.['required']) {
-      return '* Confirm password is required';
-    }
-    if (confirmPasswordControl?.value !== this.signUpForm.get('password')?.value) {
-      return '* Passwords do not match';
-    }
+    if (confirmPasswordControl?.errors?.['required']) return '* Confirm password is required';
+    if (confirmPasswordControl?.value !== this.signUpForm.get('password')?.value) return '* Passwords do not match';
     return '';
   }
 }

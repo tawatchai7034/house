@@ -13,7 +13,6 @@
   padding: 12px;
   margin: 0 20px;
   width: 90%;
-  box-shadow: 0 30px 50px #8dd3bb;
   border-radius: 16px;
 }
 
@@ -163,7 +162,6 @@ button {
     justify-content: center;
     height: 500px;
     flex-direction: column;
-    box-shadow: 0 30px 50px #8dd3bb;
     border-radius: 16px;
   }
   .inputs-container {
