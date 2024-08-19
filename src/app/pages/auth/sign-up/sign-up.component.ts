@@ -41,12 +41,7 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     if (this.signUpForm.invalid) return;    
 
-    const firstName = this.signUpForm.get('firstName')?.value;
-    const lastName = this.signUpForm.get('lastName')?.value;
-    const phoneNumber = this.signUpForm.get('phoneNumber')?.value;
-    const email = this.signUpForm.get('email')?.value;
-    const password = this.signUpForm.get('password')?.value;
-
+    const {firstName, lastName, email, phoneNumber, password} = this.signUpForm.value;
     this.store.dispatch(
       AuthActions.signUp({ firstName, lastName, email, phoneNumber, password })
     );
