@@ -1,0 +1,19 @@
+<body class="item-center">
+  <div *ngFor="let item of dataList">
+    <div *ngFor="let detail of item.detail">
+      <div
+        class="item-border-black"
+        *ngIf="detail.isBlack"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div *ngIf="detail.isHouse" class="house-center">
+        </div>
+      </div>
+      <div class="item-border" *ngIf="!detail.isBlack"></div>
+    </div>
+  </div>
+</body>

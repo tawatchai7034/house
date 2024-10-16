@@ -8,11 +8,12 @@ import { AccountComponent } from './pages/account/account.component';
 import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { SuccessPageComponent } from './pages/payment/success-page/success-page.component';
+import { DemoTestComponent } from './pages/demoTest/demoTest.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: DemoTestComponent,
   },
   {
     path: 'hotel-listing',

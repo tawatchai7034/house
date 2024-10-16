@@ -21,9 +21,11 @@ import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.compo
 import { PaymentComponent } from './pages/payment/payment.component';
 import { SuccessPageComponent } from './pages/payment/success-page/success-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DemoTestComponent } from './pages/demoTest/demoTest.component';
 
 @NgModule({
   declarations: [
+    DemoTestComponent,
     AppComponent,
     HomeComponent,
     HotelListingComponent,

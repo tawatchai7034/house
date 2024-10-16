@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-booking": {
+    "karaoke-booking": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-booking",
+            "outputPath": "dist/karaoke-booking",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -56,10 +56,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-booking:build:production"
+              "browserTarget": "karaoke-booking:build:production"
             },
             "development": {
-              "browserTarget": "angular-booking:build:development"
+              "browserTarget": "karaoke-booking:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -67,7 +67,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-booking:build"
+            "browserTarget": "karaoke-booking:build"
           }
         },
         "test": {

@@ -1,0 +1,25 @@
+.item-center {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-border {
+  width: 96px;
+  height: 96px;
+  border-style: solid;
+}
+
+.item-border-black {
+  width: 96px;
+  height: 96px;
+  border-style: solid;
+  background-color: black;
+}
+.house-center {
+  width: 56px;
+  height: 56px;
+  border-radius: 200px;
+  background-color: beige;
+}
