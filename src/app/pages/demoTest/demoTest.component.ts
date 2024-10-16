@@ -112,4 +112,57 @@ export class DemoTestComponent {
       ],
     },
   ];
+
+  public dataList2: any[] = [
+    {
+      id: 'A',
+      detail: [
+        { code: 1, isBlack: false, isHouse: false},
+        { code: 2, isBlack: true, isHouse: false },
+        { code: 3, isBlack: false, isHouse: false },
+        { code: 4, isBlack: true, isHouse: false },
+        { code: 5, isBlack: false, isHouse: false },
+      ],
+    },
+    {
+      id: 'B',
+      detail: [
+        { code: 1, isBlack: true, isHouse: false},
+        { code: 2, isBlack: false, isHouse: false },
+        { code: 3, isBlack: true, isHouse: false },
+        { code: 4, isBlack: false, isHouse: false },
+        { code: 5, isBlack: true, isHouse: false },
+      ],
+    },
+    {
+      id: 'C',
+      detail: [
+        { code: 1, isBlack: false, isHouse: false },
+        { code: 2, isBlack: true, isHouse: false },
+        { code: 3, isBlack: false, isHouse: true},
+        { code: 4, isBlack: true, isHouse: false },
+        { code: 5, isBlack: false, isHouse: false},
+      ],
+    },
+    {
+      id: 'D',
+      detail: [
+        { code: 1, isBlack: true, isHouse: false },
+        { code: 2, isBlack: false, isHouse: false },
+        { code: 3, isBlack: true, isHouse: false },
+        { code: 4, isBlack: false, isHouse: false },
+        { code: 5, isBlack: true, isHouse: false },
+      ],
+    },
+    {
+      id: 'E',
+      detail: [
+        { code: 1, isBlack: false, isHouse: false },
+        { code: 2, isBlack: true, isHouse: false },
+        { code: 3, isBlack: false, isHouse: false },
+        { code: 4, isBlack: true, isHouse: false },
+        { code: 5, isBlack: false, isHouse: false },
+      ],
+    },
+  ];
 }

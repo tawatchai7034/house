@@ -1,4 +1,5 @@
-<body class="item-center">
+<!-- 2.เขียน PHP+HTML สร้างตารางหมากฮอส (ใช้ Loop พร้อมวางหมากตอนเริ่มต้นไว้ด้วย) -->
+<!-- <body class="item-center">
   <div *ngFor="let item of dataList">
     <div *ngFor="let detail of item.detail">
       <div
@@ -14,6 +15,20 @@
         </div>
       </div>
       <div class="item-border" *ngIf="!detail.isBlack"></div>
+    </div>
+  </div>
+</body> -->
+
+<!-- 3.สร้างตารางตามภาพและจุดลงในตาราง (ใช้ Loop และโค้ดสั้นที่สุด) -->
+<body class="item-center">
+  <div *ngFor="let item of dataList2">
+    <div *ngFor="let detail of item.detail">
+      <div
+        class="item-border"
+        style="display: flex; justify-content: center; align-items: center"
+      >
+        <div *ngIf="detail.isHouse" class="house-center2"></div>
+      </div>
     </div>
   </div>
 </body>
